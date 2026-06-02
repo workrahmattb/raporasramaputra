@@ -1,0 +1,67 @@
+# Laravel
+.env
+/vendor
+/node_modules
+/public/hot
+/public/storage
+composer.phar
+
+# Storage (jangan hapus foldernya, hanya isinya)
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+storage/debugbar/
+storage/oauth-public.key
+storage/oauth-private.key
+storage/oauth-scopes/public.key
+
+# Cache Laravel
+bootstrap/cache/*.php
+bootstrap/cache/*.json
+
+# Vite (PENTING!)
+/public/hot
+# /public/build  <-- JANGAN DIIGNORE, harus di-commit supaya bisa deploy tanpa npm di server
+
+# Logs
+*.log
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+._*
+
+# Testing
+/.phpunit.result.cache
+/coverage
+
+# Environment
+.env.backup
+.env.production.local
+.env.development.local
+.env.test.local
+
+# AI
+.qwen
+.cursor
+.kilo
+.claude
+
+# NPM
+package-lock.json
+npm-debug.log
+
+# Optional
+lighthouse-*
