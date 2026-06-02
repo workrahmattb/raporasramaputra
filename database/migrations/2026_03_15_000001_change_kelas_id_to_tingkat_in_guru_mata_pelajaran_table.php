@@ -12,6 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Nonaktifkan foreign key checks agar bisa drop index/FK tanpa konflik
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
         // 1. Drop foreign key pada kolom kelas_id (jika ada)
         $foreignKey = DB::select("SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE 
             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'guru_mata_pelajaran' 
@@ -49,6 +52,9 @@ return new class extends Migration
 
         // 5. Tambah unique constraint baru dengan tingkat
         DB::statement('ALTER TABLE guru_mata_pelajaran ADD UNIQUE KEY guru_mapel_tingkat_unique (guru_id, mata_pelajaran_id, tingkat)');
+
+        // Aktifkan kembali foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**
@@ -56,6 +62,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Nonaktifkan foreign key checks agar bisa drop index/FK tanpa konflik
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
         // 1. Hapus unique constraint baru (jika ada)
         $newUniqueKey = DB::select("SELECT INDEX_NAME FROM information_schema.STATISTICS 
             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'guru_mata_pelajaran' 
@@ -74,5 +83,8 @@ return new class extends Migration
 
         // 4. Kembalikan unique constraint lama
         DB::statement('ALTER TABLE guru_mata_pelajaran ADD UNIQUE KEY guru_mapel_kelas_unique (guru_id, mata_pelajaran_id, kelas_id)');
+
+        // Aktifkan kembali foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };
