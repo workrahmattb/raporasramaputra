@@ -11,9 +11,8 @@ class MataPelajaran extends Model
 
     protected $fillable = [
         'sekolah_id',
-        'kode',
         'nama',
-        'namapelajaran_arabic',
+        'deskripsi',
         'kkm',
     ];
 

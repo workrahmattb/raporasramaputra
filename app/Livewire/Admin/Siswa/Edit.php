@@ -11,7 +11,6 @@ class Edit extends Component
     public $nisn = '';
     public $nis = '';
     public $nama = '';
-    public $nama_arabic = '';
     public $jenis_kelamin = '';
     public $tempat_lahir = '';
     public $tanggal_lahir = '';
@@ -47,7 +46,6 @@ class Edit extends Component
             'nisn' => 'required|string|max:255|unique:siswas_rapor,nisn,' . $this->siswaId,
             'nis' => 'nullable|string|max:255|unique:siswas_rapor,nis,' . $this->siswaId,
             'nama' => 'required|string|max:255',
-            'nama_arabic' => 'nullable|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
             'tempat_lahir' => 'nullable|string|max:255',
             'tanggal_lahir' => 'nullable|date',
@@ -77,7 +75,6 @@ class Edit extends Component
         $this->nisn = $siswa->nisn;
         $this->nis = $siswa->nis;
         $this->nama = $siswa->nama;
-        $this->nama_arabic = $siswa->nama_arabic;
         $this->jenis_kelamin = $siswa->jenis_kelamin;
         $this->tempat_lahir = $siswa->tempat_lahir;
         $this->tanggal_lahir = $siswa->tanggal_lahir ? $siswa->tanggal_lahir->format('Y-m-d') : '';
@@ -100,7 +97,6 @@ class Edit extends Component
             'nisn' => $this->nisn,
             'nis' => $this->nis ?: null, // Convert empty string to null
             'nama' => $this->nama,
-            'nama_arabic' => $this->nama_arabic,
             'jenis_kelamin' => $this->jenis_kelamin,
             'tempat_lahir' => $this->tempat_lahir,
             'tanggal_lahir' => $this->tanggal_lahir ?: null,

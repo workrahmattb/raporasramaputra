@@ -79,7 +79,6 @@ class Index extends Component
                 'id' => $siswa->id,
                 'nomor_absen' => $siswa->nomor_absen,
                 'nama' => $siswa->nama,
-                'nama_arabic' => $siswa->nama_arabic,
                 'grades' => [],
             ];
 

@@ -14,10 +14,6 @@ class Index extends Component
     public $confirmingDeletion = false;
     public $mataPelajaranToDelete = null;
 
-    // Inline editing for Arabic names
-    public $editingNamaArabic = [];
-    public $namaArabicValues = [];
-
     protected $queryString = ['search'];
 
     public function updatingSearch()
@@ -42,37 +38,12 @@ class Index extends Component
         session()->flash('message', 'Mata pelajaran berhasil dihapus.');
     }
 
-    public function editNamaArabic($mataPelajaranId)
-    {
-        $this->editingNamaArabic[$mataPelajaranId] = true;
-        $mataPelajaran = MataPelajaran::find($mataPelajaranId);
-        $this->namaArabicValues[$mataPelajaranId] = $mataPelajaran->namapelajaran_arabic ?? '';
-    }
-
-    public function cancelEditNamaArabic($mataPelajaranId)
-    {
-        $this->editingNamaArabic[$mataPelajaranId] = false;
-        unset($this->namaArabicValues[$mataPelajaranId]);
-    }
-
-    public function updateNamaArabic($mataPelajaranId)
-    {
-        $mataPelajaran = MataPelajaran::findOrFail($mataPelajaranId);
-        $mataPelajaran->update([
-            'namapelajaran_arabic' => $this->namaArabicValues[$mataPelajaranId] ?? null
-        ]);
-
-        $this->editingNamaArabic[$mataPelajaranId] = false;
-        session()->flash('message', 'Nama Arabic berhasil diperbarui.');
-    }
-
     public function render()
     {
         $mataPelajarans = MataPelajaran::where('sekolah_id', auth()->user()->sekolah_id)
             ->when($this->search, function($query) {
                 $query->where(function($q) {
-                    $q->where('nama', 'like', '%' . $this->search . '%')
-                      ->orWhere('kode', 'like', '%' . $this->search . '%');
+                    $q->where('nama', 'like', '%' . $this->search . '%');
                 });
             })
             ->orderBy('nama')

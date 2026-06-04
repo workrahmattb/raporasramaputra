@@ -10,7 +10,6 @@ class Create extends Component
 {
     public $nip = '';
     public $nama = '';
-    public $nama_arabic = '';
     public $jenis_kelamin = '';
     public $tempat_lahir = '';
     public $tanggal_lahir = '';
@@ -28,7 +27,6 @@ class Create extends Component
         return [
             'nip' => 'required|string|max:255|unique:gurus_rapor,nip',
             'nama' => 'required|string|max:255',
-            'nama_arabic' => 'nullable|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
             'tempat_lahir' => 'nullable|string|max:255',
             'tanggal_lahir' => 'nullable|date',
@@ -76,7 +74,6 @@ class Create extends Component
             'user_id' => $user->id,
             'nip' => $this->nip,
             'nama' => $this->nama,
-            'nama_arabic' => $this->nama_arabic,
             'jenis_kelamin' => $this->jenis_kelamin,
             'tempat_lahir' => $this->tempat_lahir,
             'tanggal_lahir' => $this->tanggal_lahir ?: null,

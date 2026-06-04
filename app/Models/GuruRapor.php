@@ -17,7 +17,6 @@ class GuruRapor extends Model
         'user_id',
         'nip',
         'nama',
-        'nama_arabic',
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',

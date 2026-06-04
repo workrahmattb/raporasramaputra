@@ -17,7 +17,6 @@ class SiswaRapor extends Model
         'nisn',
         'nis',
         'nama',
-        'nama_arabic',
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',

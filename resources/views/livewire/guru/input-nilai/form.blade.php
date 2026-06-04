@@ -41,7 +41,7 @@
                 class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <option value="">-- Pilih Mata Pelajaran --</option>
                 @foreach($allMapels as $mapel)
-                    <option value="{{ $mapel->id }}">{{ $mapel->kode }} - {{ $mapel->nama }}</option>
+                    <option value="{{ $mapel->id }}">{{ $mapel->nama }}</option>
                 @endforeach
             </select>
         </div>
@@ -55,7 +55,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <div class="text-sm text-blue-800">
-                    <p class="font-semibold">{{ $mataPelajaran->nama }} ({{ $mataPelajaran->kode }}) — Semester: {{ $semester->nama ?? 'Belum ada semester aktif' }}</p>
+                    <p class="font-semibold">{{ $mataPelajaran->nama }} — Semester: {{ $semester->nama ?? 'Belum ada semester aktif' }}</p>
                     <p class="mt-1">Nilai harus antara 0-100. Kosongkan jika belum ada nilai.</p>
                 </div>
             </div>

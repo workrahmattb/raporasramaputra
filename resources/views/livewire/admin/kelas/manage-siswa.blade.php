@@ -222,7 +222,6 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">No</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NISN</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Arabic</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jenis Kelamin</th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                         </tr>
@@ -238,48 +237,6 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm font-medium text-gray-900">{{ $siswa->nama }}</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    @if(isset($editingNamaArabic[$siswa->id]) && $editingNamaArabic[$siswa->id])
-                                        <div class="flex items-center space-x-2">
-                                            <input 
-                                                wire:model="namaArabicValues.{{ $siswa->id }}" 
-                                                type="text" 
-                                                class="w-full px-2 py-1 text-sm border border-blue-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                                placeholder="Nama dalam bahasa Arab"
-                                                wire:keydown.enter="updateNamaArabic({{ $siswa->id }})"
-                                                wire:keydown.escape="cancelEditNamaArabic({{ $siswa->id }})"
-                                            >
-                                            <button 
-                                                wire:click="updateNamaArabic({{ $siswa->id }})" 
-                                                class="text-green-600 hover:text-green-900"
-                                                title="Simpan">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </button>
-                                            <button 
-                                                wire:click="cancelEditNamaArabic({{ $siswa->id }})" 
-                                                class="text-gray-600 hover:text-gray-900"
-                                                title="Batal">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    @else
-                                        <div class="flex items-center justify-between group">
-                                            <span class="text-sm text-gray-900">{{ $siswa->nama_arabic ?? '-' }}</span>
-                                            <button 
-                                                wire:click="editNamaArabic({{ $siswa->id }}, '{{ $siswa->nama_arabic }}')" 
-                                                class="ml-2 text-blue-600 hover:text-blue-900 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                title="Edit Nama Arabic">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $siswa->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}

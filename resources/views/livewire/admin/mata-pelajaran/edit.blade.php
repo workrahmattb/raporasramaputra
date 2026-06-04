@@ -18,18 +18,6 @@
     <div class="bg-white rounded-lg shadow-md p-6">
         <form wire:submit="update">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Kode -->
-                <div>
-                    <label for="kode" class="block text-sm font-medium text-gray-700 mb-2">
-                        Kode Mata Pelajaran <span class="text-red-500">*</span>
-                    </label>
-                    <input wire:model="kode" type="text" id="kode" placeholder="Contoh: MTK"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('kode') border-red-500 @enderror">
-                    @error('kode')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
                 <!-- Nama -->
                 <div>
                     <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">
@@ -38,18 +26,6 @@
                     <input wire:model="nama" type="text" id="nama" placeholder="Contoh: Matematika"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('nama') border-red-500 @enderror">
                     @error('nama')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Nama Pelajaran Arabic -->
-                <div>
-                    <label for="namapelajaran_arabic" class="block text-sm font-medium text-gray-700 mb-2">
-                        Nama Pelajaran Arabic
-                    </label>
-                    <input wire:model="namapelajaran_arabic" type="text" id="namapelajaran_arabic" placeholder="Nama mata pelajaran dalam bahasa Arab"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('namapelajaran_arabic') border-red-500 @enderror">
-                    @error('namapelajaran_arabic')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
@@ -66,6 +42,18 @@
                     @enderror
                     <p class="mt-1 text-xs text-gray-500">Nilai minimal untuk dinyatakan tuntas (0-100)</p>
                 </div>
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="mt-6">
+                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">
+                    Deskripsi Mata Pelajaran
+                </label>
+                <textarea wire:model="deskripsi" id="deskripsi" rows="3" placeholder="Deskripsikan mata pelajaran ini..."
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('deskripsi') border-red-500 @enderror"></textarea>
+                @error('deskripsi')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Actions -->

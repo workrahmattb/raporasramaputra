@@ -8,20 +8,17 @@ use App\Models\MataPelajaran;
 class Edit extends Component
 {
     public $mataPelajaranId;
-    public $kode = '';
     public $nama = '';
-    public $namapelajaran_arabic = '';
+    public $deskripsi = '';
     public $kkm = 75;
 
     protected $rules = [
-        'kode' => 'required|string|max:10',
         'nama' => 'required|string|max:255',
-        'namapelajaran_arabic' => 'nullable|string|max:255',
+        'deskripsi' => 'nullable|string',
         'kkm' => 'required|integer|min:0|max:100',
     ];
 
     protected $messages = [
-        'kode.required' => 'Kode mata pelajaran harus diisi',
         'nama.required' => 'Nama mata pelajaran harus diisi',
         'kkm.required' => 'KKM harus diisi',
         'kkm.min' => 'KKM minimal 0',
@@ -33,9 +30,8 @@ class Edit extends Component
         $this->mataPelajaranId = $id;
         $mataPelajaran = MataPelajaran::findOrFail($id);
         
-        $this->kode = $mataPelajaran->kode;
         $this->nama = $mataPelajaran->nama;
-        $this->namapelajaran_arabic = $mataPelajaran->namapelajaran_arabic;
+        $this->deskripsi = $mataPelajaran->deskripsi ?? '';
         $this->kkm = $mataPelajaran->kkm;
     }
 
@@ -45,9 +41,8 @@ class Edit extends Component
 
         $mataPelajaran = MataPelajaran::findOrFail($this->mataPelajaranId);
         $mataPelajaran->update([
-            'kode' => $this->kode,
             'nama' => $this->nama,
-            'namapelajaran_arabic' => $this->namapelajaran_arabic,
+            'deskripsi' => $this->deskripsi,
             'kkm' => $this->kkm,
         ]);
 

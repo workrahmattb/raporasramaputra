@@ -112,7 +112,6 @@ class RaporTestDataSeeder extends Seeder
         if (!$mapel) {
             $mapel = MataPelajaran::create([
                 'sekolah_id' => $sekolah->id,
-                'kode' => 'MTK',
                 'nama' => 'Matematika',
                 'kkm' => 75,
             ]);

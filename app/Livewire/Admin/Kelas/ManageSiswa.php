@@ -17,9 +17,6 @@ class ManageSiswa extends Component
     public $siswaId;
     public $confirmingDeletion = false;
     public $siswaToDelete = null;
-    public $editingNamaArabic = [];
-    public $namaArabicValues = [];
-    
     // Search properties
     public $searchSiswa = '';
     public $selectedSiswa = null;
@@ -102,29 +99,6 @@ class ManageSiswa extends Component
         $this->siswaToDelete = null;
 
         session()->flash('message', 'Siswa berhasil dihapus dari kelas.');
-    }
-
-    public function editNamaArabic($siswaId, $currentValue)
-    {
-        $this->editingNamaArabic[$siswaId] = true;
-        $this->namaArabicValues[$siswaId] = $currentValue;
-    }
-
-    public function updateNamaArabic($siswaId)
-    {
-        $siswa = SiswaRapor::findOrFail($siswaId);
-        $siswa->update([
-            'nama_arabic' => $this->namaArabicValues[$siswaId] ?? null
-        ]);
-
-        $this->editingNamaArabic[$siswaId] = false;
-        session()->flash('message', 'Nama Arabic berhasil diperbarui.');
-    }
-
-    public function cancelEditNamaArabic($siswaId)
-    {
-        $this->editingNamaArabic[$siswaId] = false;
-        unset($this->namaArabicValues[$siswaId]);
     }
 
     public function getAvailableSiswasProperty()

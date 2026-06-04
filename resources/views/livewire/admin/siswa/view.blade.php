@@ -41,10 +41,6 @@
                     <p class="text-gray-900 font-semibold">{{ $siswa->nama }}</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-500 mb-1">Nama Arabic</label>
-                    <p class="text-gray-900">{{ $siswa->nama_arabic ?? '-' }}</p>
-                </div>
-                <div>
                     <label class="block text-sm font-medium text-gray-500 mb-1">Jenis Kelamin</label>
                     <p class="text-gray-900">{{ $siswa->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</p>
                 </div>

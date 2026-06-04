@@ -11,7 +11,6 @@ class Edit extends Component
     public $guruId;
     public $nip = '';
     public $nama = '';
-    public $nama_arabic = '';
     public $jenis_kelamin = '';
     public $tempat_lahir = '';
     public $tanggal_lahir = '';
@@ -32,7 +31,6 @@ class Edit extends Component
         $rules = [
             'nip' => 'required|string|max:255',
             'nama' => 'required|string|max:255',
-            'nama_arabic' => 'nullable|string|max:255',
             'jenis_kelamin' => 'required|in:L,P',
             'tempat_lahir' => 'nullable|string|max:255',
             'tanggal_lahir' => 'nullable|date',
@@ -68,7 +66,6 @@ class Edit extends Component
         
         $this->nip = $guru->nip;
         $this->nama = $guru->nama;
-        $this->nama_arabic = $guru->nama_arabic;
         $this->jenis_kelamin = $guru->jenis_kelamin;
         $this->tempat_lahir = $guru->tempat_lahir;
         $this->tanggal_lahir = $guru->tanggal_lahir ? $guru->tanggal_lahir->format('Y-m-d') : '';
@@ -94,7 +91,6 @@ class Edit extends Component
         $guru->update([
             'nip' => $this->nip,
             'nama' => $this->nama,
-            'nama_arabic' => $this->nama_arabic,
             'jenis_kelamin' => $this->jenis_kelamin,
             'tempat_lahir' => $this->tempat_lahir,
             'tanggal_lahir' => $this->tanggal_lahir ?: null,

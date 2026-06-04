@@ -53,9 +53,7 @@
         }
 
         .identity-box {
-            border: 3px double #000;
-            padding: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .identity-table {
@@ -97,6 +95,7 @@
             border-collapse: collapse;
             margin-bottom: 25px;
             border: 4px double #000;
+            table-layout: fixed;
         }
 
         .data-table th {
@@ -121,11 +120,18 @@
             font-weight: bold;
         }
 
-        .predikat-istimewa { color: #000; font-weight: bold; }
-        .predikat-baik-sekali { color: #000; font-weight: bold; }
-        .predikat-baik { color: #000; }
-        .predikat-cukup { color: #000; }
-        .predikat-kurang { color: #000; font-weight: bold; }
+        .deskripsi-subject {
+            font-size: 9pt;
+            color: #555;
+            font-style: italic;
+        }
+
+        .no-col {
+            width: 8%;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 500;
+        }
 
         .notes {
             border: 2px dashed #000;
@@ -194,25 +200,28 @@
                 <td class="label">Nama Siswa</td>
                 <td class="separator">:</td>
                 <td class="value">{{ $siswa->nama }}</td>
-                <td width="40%"></td>
-                <td class="label">Asrama</td>
-                <td class="separator">:</td>
-                <td class="value">{{ $kelas->nama ?? '-' }}</td>
             </tr>
             <tr>
                 <td class="label">NISN</td>
                 <td class="separator">:</td>
                 <td class="value">{{ $siswa->nisn ?? '-' }}</td>
-                <td></td>
-                <td class="label">Semester</td>
-                <td class="separator">:</td>
-                <td class="value">{{ $semester->nama ?? '-' }}</td>
             </tr>
             <tr>
                 <td class="label">Tahun Ajaran</td>
                 <td class="separator">:</td>
                 <td class="value">{{ $semester->tahunAjaran->tahun ?? '-' }}</td>
-                <td></td>
+            </tr>
+            <tr>
+                <td class="label">Asrama</td>
+                <td class="separator">:</td>
+                <td class="value">{{ $kelas->nama ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td class="label">Semester</td>
+                <td class="separator">:</td>
+                <td class="value">{{ $semester->nama ?? '-' }}</td>
+            </tr>
+            <tr>
                 <td class="label">Wali Asrama</td>
                 <td class="separator">:</td>
                 <td class="value">{{ $kelas->waliKelas->nama ?? '-' }}</td>
@@ -227,10 +236,10 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th width="5%">No</th>
-                    <th width="50%">Mata Pelajaran</th>
-                    <th width="20%">Nilai</th>
-                    <th width="25%">Predikat</th>
+                    <th class="center" width="8%">No</th>
+                    <th width="35%">Aspek Penilaian<br><span style="font-weight:normal;font-size:8pt">(Assessment Aspect)</span></th>
+                    <th width="37%">Indikator<br><span style="font-weight:normal;font-size:8pt">(Indicator)</span></th>
+                    <th class="center" width="20%">Nilai</th>
                 </tr>
             </thead>
             <tbody>
@@ -238,32 +247,12 @@
                     @php
                         $nilaiPengetahuan = $nilai->nilai_pengetahuan ?? 0;
                         $isEmptyNilai = empty($nilaiPengetahuan) || $nilaiPengetahuan == 0;
-                        
-                        $predikat = $isEmptyNilai ? '-' : match(true) {
-                            $nilaiPengetahuan >= 90 => 'Istimewa',
-                            $nilaiPengetahuan >= 85 => 'Baik Sekali',
-                            $nilaiPengetahuan >= 75 => 'Baik',
-                            $nilaiPengetahuan >= 70 => 'Cukup',
-                            default => 'Kurang',
-                        };
-                        
-                        $predClass = '';
-                        if (!$isEmptyNilai) {
-                            $predClass = match($predikat) {
-                                'Istimewa' => 'predikat-istimewa',
-                                'Baik Sekali' => 'predikat-baik-sekali',
-                                'Baik' => 'predikat-baik',
-                                'Cukup' => 'predikat-cukup',
-                                'Kurang' => 'predikat-kurang',
-                                default => '',
-                            };
-                        }
                     @endphp
                     <tr>
-                        <td class="center">{{ $index + 1 }}</td>
+                        <td class="no-col">{{ $index + 1 }}</td>
                         <td>{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
+                        <td class="deskripsi-subject">{{ $nilai->mataPelajaran->deskripsi ?? '-' }}</td>
                         <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}</td>
-                        <td class="center {{ $predClass }}">{{ $predikat }}</td>
                     </tr>
                 @endforeach
                 
@@ -284,14 +273,14 @@
                 
                 <tr style="font-weight: bold; border: 1px solid #000;">
                     <td colspan="2" class="center">Jumlah</td>
-                    <td class="center grade-score">{{ $totalNilai > 0 ? number_format($totalNilai, 0) : '-' }}</td>
                     <td></td>
+                    <td class="center grade-score">{{ $totalNilai > 0 ? number_format($totalNilai, 0) : '-' }}</td>
                 </tr>
                 
                 <tr style="font-weight: bold; border: 1px solid #000;">
                     <td colspan="2" class="center">Rata-rata</td>
-                    <td class="center grade-score">{{ $average > 0 ? number_format($average, 2) : '-' }}</td>
                     <td></td>
+                    <td class="center grade-score">{{ $average > 0 ? number_format($average, 2) : '-' }}</td>
                 </tr>
             </tbody>
         </table>

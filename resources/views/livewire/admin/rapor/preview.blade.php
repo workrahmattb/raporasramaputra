@@ -60,7 +60,7 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">No</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Mata Pelajaran</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aspek Penilaian<br><span style="font-weight:normal;font-size:10px">(Assessment Aspect)</span></th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Pengetahuan</th>
                             </tr>
                         </thead>
