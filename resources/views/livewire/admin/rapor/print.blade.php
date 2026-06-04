@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Rapor - {{ $siswa->nama }}</title>
     <style>
         @page {
             margin: 10mm 15mm;
             size: 215mm 330mm;
         }
-        
+
         body {
             font-family: 'DejaVu Sans', sans-serif;
             font-size: 10pt;
@@ -23,33 +24,31 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
         }
-        
+
         .logo-img {
             width: 100px;
             height: auto;
         }
-        
+
         .header-text {
             text-align: center;
-        }
-        
-        .header-title {
-            font-size: 24pt;
-            font-weight: 800;
+        }        .header-yayasan {
+            font-size: 13pt;
+            font-weight: 700;
             margin: 0;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
         .header-subtitle {
-            font-size: 14pt;
-            font-weight: 600;
+            font-size: 16pt;
+            font-weight: 800;
             margin: 5px 0;
         }
         
         .header-address {
-            font-size: 9pt;
-            margin: 0;
-            color: #555;
+            font-size: 10pt;
+            margin: 2px 0;
+            color: #444;
         }
 
         .identity-box {
@@ -86,14 +85,14 @@
             padding: 8px 15px;
             font-size: 14pt;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 0;
             display: inline-block;
         }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 25px;
+            margin-bottom: 0;
             border: 4px double #000;
             table-layout: fixed;
         }
@@ -113,8 +112,13 @@
             font-size: 10pt;
         }
 
-        .center { text-align: center; }
-        .right { text-align: right; }
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
 
         .grade-score {
             font-weight: bold;
@@ -141,34 +145,47 @@
 
         .footer-table {
             width: 100%;
-            margin-top: 40px;
+            margin-top: 5px;
             page-break-inside: avoid;
         }
+
+        .sign-col-left {
+            width: 50%;
+            text-align: left;
+            vertical-align: top;
+            padding-right: 20px;
+        }
         
-        .sign-col {
-            width: 25%;
+        .sign-col-right {
+            width: 50%;
+            text-align: right;
+            vertical-align: top;
+            padding-left: 20px;
+        }
+        
+        .sign-col-center {
+            width: 100%;
             text-align: center;
             vertical-align: top;
         }
-        
+
         .date-line {
             text-align: right;
             margin-bottom: 10px;
             padding-right: 20px;
-        }
-        
-        .sign-role {
-            font-size: 10pt;
-            font-weight: bold;
-        }
-
-        .sign-spacer {
-            height: 250px;
+        }.sign-role {
+            font-size: 8pt;
+            font-weight: normal;
         }
         
         .sign-name {
             font-weight: bold;
-            font-size: 13pt;
+            font-size: 11pt;
+            text-decoration: underline;
+        }
+
+        .sign-spacer {
+            height: 40px;
         }
 
         .page-break {
@@ -176,6 +193,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -186,12 +204,22 @@
             </td>
             <td width="85%" align="center">
                 <div class="header-text">
-                    <h1 class="header-title">RAPOR ASRAMA</h1>
-                    <h2 class="header-subtitle">PONDOK PESANTREN SYAFA'ATURRASUL</h2>
+                    <div class="header-yayasan">YAYASAN WAKAF SYAFA'ATURRASUL MADANI</div>
+                    <div class="header-subtitle">PONDOK PESANTREN SYAFA'ATURRASUL 2 PUTRA</div>
+                    <div class="header-address">Desa Jalur Patah, Kecamatan Sentajo Raya</div>
+                    <div class="header-address">Kabupaten Kuantan Singingi - Riau</div>
                 </div>
             </td>
         </tr>
     </table>
+
+    <!-- Report Title -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 14pt; font-weight: bold; line-height: 1.4;">LAPORAN PENILAIAN SIKAP KEPRIBADIAN DAN
+            SOSIAL SANTRI</div>
+        <div style="font-size: 10pt; font-style: italic; color: #444;">(Assessment Report of Students' Religious and
+            Social Behavior)</div>
+    </div>
 
     <!-- Identity -->
     <div class="identity-box">
@@ -200,16 +228,6 @@
                 <td class="label">Nama Siswa</td>
                 <td class="separator">:</td>
                 <td class="value">{{ $siswa->nama }}</td>
-            </tr>
-            <tr>
-                <td class="label">NISN</td>
-                <td class="separator">:</td>
-                <td class="value">{{ $siswa->nisn ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td class="label">Tahun Ajaran</td>
-                <td class="separator">:</td>
-                <td class="value">{{ $semester->tahunAjaran->tahun ?? '-' }}</td>
             </tr>
             <tr>
                 <td class="label">Asrama</td>
@@ -222,28 +240,26 @@
                 <td class="value">{{ $semester->nama ?? '-' }}</td>
             </tr>
             <tr>
-                <td class="label">Wali Asrama</td>
+                <td class="label">Tahun Ajaran</td>
                 <td class="separator">:</td>
-                <td class="value">{{ $kelas->waliKelas->nama ?? '-' }}</td>
+                <td class="value">{{ $semester->tahunAjaran->tahun ?? '-' }}</td>
             </tr>
         </table>
-    </div>
-
-    <!-- Academic Scores -->
-    <div class="section-header">PENCAPAIAN KOMPETENSI DAN HASIL BELAJAR</div>
-    
+    </div>    <!-- Academic Scores -->
     @if(count($nilais) > 0)
         <table class="data-table">
             <thead>
                 <tr>
                     <th class="center" width="8%">No</th>
-                    <th width="35%">Aspek Penilaian<br><span style="font-weight:normal;font-size:8pt">(Assessment Aspect)</span></th>
-                    <th width="37%">Indikator<br><span style="font-weight:normal;font-size:8pt">(Indicator)</span></th>
+                    <th width="35%">Aspek Penilaian<br><span style="font-weight:normal;font-size:8pt">(Assessment
+                            Aspect)</span></th>
+                    <th width="37%">Indikator<br><span style="font-weight:normal;font-size:8pt">(Indicator)</span>
+                    </th>
                     <th class="center" width="20%">Nilai</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($nilais as $index => $nilai)
+                @foreach ($nilais as $index => $nilai)
                     @php
                         $nilaiPengetahuan = $nilai->nilai_pengetahuan ?? 0;
                         $isEmptyNilai = empty($nilaiPengetahuan) || $nilaiPengetahuan == 0;
@@ -252,36 +268,10 @@
                         <td class="no-col">{{ $index + 1 }}</td>
                         <td>{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
                         <td class="deskripsi-subject">{{ $nilai->mataPelajaran->deskripsi ?? '-' }}</td>
-                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}</td>
+                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}
+                        </td>
                     </tr>
                 @endforeach
-                
-                @php
-                    $totalNilai = 0;
-                    $countNilai = 0;
-                    
-                    foreach($nilais as $nilai) {
-                        $nilaiPengetahuan = $nilai->nilai_pengetahuan ?? 0;
-                        if ($nilaiPengetahuan > 0) {
-                            $totalNilai += $nilaiPengetahuan;
-                            $countNilai++;
-                        }
-                    }
-                    
-                    $average = $countNilai > 0 ? round($totalNilai / $countNilai, 2) : 0;
-                @endphp
-                
-                <tr style="font-weight: bold; border: 1px solid #000;">
-                    <td colspan="2" class="center">Jumlah</td>
-                    <td></td>
-                    <td class="center grade-score">{{ $totalNilai > 0 ? number_format($totalNilai, 0) : '-' }}</td>
-                </tr>
-                
-                <tr style="font-weight: bold; border: 1px solid #000;">
-                    <td colspan="2" class="center">Rata-rata</td>
-                    <td></td>
-                    <td class="center grade-score">{{ $average > 0 ? number_format($average, 2) : '-' }}</td>
-                </tr>
             </tbody>
         </table>
     @else
@@ -289,40 +279,29 @@
     @endif
 
     <!-- Notes -->
-    <div class="section-header">CATATAN WALI ASRAMA</div>
+    <div class="section-header">CATATAN MUSRIF</div>
     <div class="notes">
-        @if($catatan && $catatan->catatan)
+        @if ($catatan && $catatan->catatan)
             {{ $catatan->catatan }}
         @else
             <span style="color: #999; font-style: italic;">Tidak ada catatan.</span>
         @endif
-    </div>
-
-    <!-- Signatures -->
+    </div>    <!-- Signatures -->
     <div class="date-line">
         <span>{{ $settings->tanggal_rapor ?? now()->locale('id')->isoFormat('D MMMM YYYY') }}</span>
     </div>
     
     <table class="footer-table">
         <tr>
-            <td class="sign-col">
-                <div class="sign-role">PIMPINAN PONDOK PESANTREN</div>
+            <td class="sign-col-left">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-name">{{ $settings->pimpinan_pondok ?? '-' }}</div>
+                <div class="sign-name"></div>
+                <div class="sign-role">ORANG TUA / WALI</div>
             </td>
-            <td class="sign-col">
-                <div class="sign-role">KEPALA PENGASUHAN ASRAMA</div>
-                <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-name">{{ $settings->kepala_pengasuhan_asrama ?? '-' }}</div>
-            </td>
-            <td class="sign-col">
-                <div class="sign-role">WALI ASRAMA</div>
+            <td class="sign-col-right">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
@@ -330,17 +309,45 @@
                 <div class="sign-name">
                     {{ $kelas->waliKelas->nama ?? '' }}
                 </div>
+                <div class="sign-role">WALI ASRAMA</div>
             </td>
-            <td class="sign-col">
-                <div class="sign-role">ORANG TUA / WALI</div>  
+        </tr>
+    </table>
+    
+    <table class="footer-table">
+        <tr>
+            <td class="sign-col-center" colspan="2">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-name"></div>
+                <div class="sign-role">MENGETAHUI</div>
+            </td>
+        </tr>
+    </table>
+    
+    <table class="footer-table">
+        <tr>
+            <td class="sign-col-left">
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $settings->pimpinan_pondok ?? '-' }}</div>
+                <div class="sign-role">PIMPINAN PONDOK PESANTREN</div>
+            </td>
+            <td class="sign-col-right">
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $settings->kepala_pengasuhan_asrama ?? '-' }}</div>
+                <div class="sign-role">KEPALA PENGASUHAN ASRAMA</div>
             </td>
         </tr>
     </table>
 
 </body>
+
 </html>
