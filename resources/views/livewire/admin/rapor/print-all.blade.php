@@ -316,7 +316,7 @@
                 <div class="sign-name">
                     {{ $kelas->waliKelas->nama ?? '' }}
                 </div>
-                <div class="sign-role">WALI ASRAMA</div>
+                <div class="sign-role">PEMBINA ASRAMA</div>
             </td>
         </tr>
     </table>
