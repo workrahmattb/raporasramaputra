@@ -48,7 +48,7 @@ class Form extends Component
             $this->semesterId = $semesterId;
             $this->semester = Semester::findOrFail($semesterId);
         } else {
-            $this->semester = Semester::where('status', 'Aktif')->first();
+            $this->semester = Semester::where('is_active', true)->first();
             $this->semesterId = $this->semester->id ?? null;
         }
 

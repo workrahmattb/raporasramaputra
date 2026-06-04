@@ -8,8 +8,8 @@
                 </svg>
             </a>
             <div>
-                <h1 class="text-2xl font-bold text-gray-800">Tambah Guru</h1>
-                <p class="text-gray-600 mt-1">Tambahkan data guru baru</p>
+                <h1 class="text-2xl font-bold text-gray-800">Tambah Pembina Asrama</h1>
+                <p class="text-gray-600 mt-1">Tambahkan data pembina asrama baru</p>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">
                         Nama Lengkap <span class="text-red-500">*</span>
                     </label>
-                    <input wire:model="nama" type="text" id="nama" placeholder="Nama lengkap guru"
+                    <input wire:model="nama" type="text" id="nama" placeholder="Nama lengkap pembina asrama"
                         class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('nama') border-red-500 @enderror">
                     @error('nama')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

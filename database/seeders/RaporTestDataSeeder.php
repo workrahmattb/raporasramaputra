@@ -29,25 +29,24 @@ class RaporTestDataSeeder extends Seeder
                 'alamat' => 'Jl. Test No. 123',
                 'telepon' => '021-12345678',
                 'email' => 'ppsr@test.com',
-                'status' => 'Aktif'
             ]);
             $this->command->info('✓ Sekolah created');
         }
 
         // Create or get active tahun ajaran
-        $tahunAjaran = TahunAjaran::where('status', 'Aktif')->first();
+        $tahunAjaran = TahunAjaran::where('is_active', true)->first();
         if (!$tahunAjaran) {
             $tahunAjaran = TahunAjaran::create([
                 'nama' => '2025/2026',
                 'tanggal_mulai' => '2025-07-01',
                 'tanggal_selesai' => '2026-06-30',
-                'status' => 'Aktif'
+                'is_active' => true
             ]);
             $this->command->info('✓ Tahun Ajaran created: ' . $tahunAjaran->nama);
         }
 
         // Create active semester
-        $semester = Semester::where('status', 'Aktif')->first();
+        $semester = Semester::where('is_active', true)->first();
         if (!$semester) {
             $semester = Semester::create([
                 'tahun_ajaran_id' => $tahunAjaran->id,
@@ -55,7 +54,7 @@ class RaporTestDataSeeder extends Seeder
                 'jenis' => 'Ganjil',
                 'tanggal_mulai' => $tahunAjaran->tanggal_mulai,
                 'tanggal_selesai' => now()->addMonths(6),
-                'status' => 'Aktif'
+                'is_active' => true
             ]);
             $this->command->info('✓ Semester created: ' . $semester->nama);
         }
@@ -70,9 +69,6 @@ class RaporTestDataSeeder extends Seeder
                 'sekolah_id' => $sekolah->id,
                 'tahun_ajaran_id' => $tahunAjaran->id,
                 'nama' => 'VII-A',
-                'tingkat' => 'VII',
-                'ruangan' => 'R-101',
-                'kapasitas' => 30
             ]);
             $this->command->info('✓ Kelas created: ' . $kelas->nama);
         }
@@ -85,7 +81,7 @@ class RaporTestDataSeeder extends Seeder
                 'name' => 'Guru Test',
                 'email' => 'guru@test.com',
                 'password' => Hash::make('guru123'),
-                'role' => 'wali_kelas' // Both guru and wali kelas
+                'role' => 'guru'
             ]);
 
             $guru = GuruRapor::create([
@@ -115,30 +111,12 @@ class RaporTestDataSeeder extends Seeder
         $mapel = MataPelajaran::where('nama', 'Matematika')->first();
         if (!$mapel) {
             $mapel = MataPelajaran::create([
-                'nama' => 'Matematika',
+                'sekolah_id' => $sekolah->id,
                 'kode' => 'MTK',
-                'kategori' => 'Wajib',
-                'status' => 'Aktif'
+                'nama' => 'Matematika',
+                'kkm' => 75,
             ]);
             $this->command->info('✓ Mata Pelajaran created: Matematika');
-        }
-
-        // Assign guru to mata pelajaran and tingkat
-        $assignment = DB::table('guru_mata_pelajaran')
-            ->where('guru_id', $guru->id)
-            ->where('mata_pelajaran_id', $mapel->id)
-            ->where('tingkat', $kelas->tingkat)
-            ->exists();
-
-        if (!$assignment) {
-            DB::table('guru_mata_pelajaran')->insert([
-                'guru_id' => $guru->id,
-                'mata_pelajaran_id' => $mapel->id,
-                'tingkat' => $kelas->tingkat,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-            $this->command->info('✓ Guru assigned to Matematika in ' . $kelas->nama);
         }
 
         // Create sample students
@@ -187,13 +165,13 @@ class RaporTestDataSeeder extends Seeder
         $this->command->info('Tahun Ajaran: ' . $tahunAjaran->nama);
         $this->command->info('Semester: ' . $semester->nama);
         $this->command->info('Kelas: ' . $kelas->nama);
-        $this->command->info('Guru/Wali Kelas: guru@test.com / guru123');
+        $this->command->info('Wali Kelas: guru@test.com / guru123');
         $this->command->info('Mata Pelajaran: ' . $mapel->nama);
         $this->command->info('Siswa: 3 students enrolled');
         $this->command->info('');
         $this->command->info('✅ Ready to test!');
         $this->command->info('1. Login as guru@test.com / guru123');
-        $this->command->info('2. Go to "Input Nilai" to enter grades');
-        $this->command->info('3. Go to "Cetak Rapor" to preview and print report cards');
+        $this->command->info('2. Go to \"Input Nilai\" to enter grades');
+        $this->command->info('3. Go to \"Cetak Rapor\" to preview and print report cards');
     }
 }

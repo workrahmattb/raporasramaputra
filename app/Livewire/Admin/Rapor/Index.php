@@ -141,8 +141,7 @@ class Index extends Component
                 'siswas_rapor.*',
                 'kelas_siswa.nomor_absen',
                 'kelas_siswa.kelas_id',
-                'kelas_rapor.nama as kelas_nama',
-                'kelas_rapor.tingkat as kelas_tingkat'
+                'kelas_rapor.nama as kelas_nama'
             )
             ->when($this->kelasId, function($query) {
                 $query->where('kelas_siswa.kelas_id', $this->kelasId);

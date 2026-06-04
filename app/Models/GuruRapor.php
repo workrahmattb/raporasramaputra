@@ -45,13 +45,6 @@ class GuruRapor extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function mataPelajarans()
-    {
-        return $this->belongsToMany(MataPelajaran::class, 'guru_mata_pelajaran', 'guru_id', 'mata_pelajaran_id')
-                    ->withPivot('tingkat')
-                    ->withTimestamps();
-    }
-
     public function kelasWali()
     {
         return $this->hasMany(KelasRapor::class, 'wali_kelas_id');

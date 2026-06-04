@@ -58,7 +58,6 @@ class Index extends Component
                 $search = '%' . $this->search . '%';
                 $query->where(function($q) use ($search) {
                     $q->where('nama', 'like', $search)
-                      ->orWhere('tingkat', 'like', $search)
                       ->orWhereHas('siswas', function($sq) use ($search) {
                           $sq->where('nama', 'like', $search)
                             ->orWhere('nisn', 'like', $search);
@@ -68,7 +67,6 @@ class Index extends Component
             ->when($this->tahun_ajaran_filter, function($query) {
                 $query->where('tahun_ajaran_id', $this->tahun_ajaran_filter);
             })
-            ->orderBy('tingkat')
             ->orderBy('nama')
             ->paginate(15);
 

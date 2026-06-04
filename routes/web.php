@@ -60,14 +60,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{id}/edit', \App\Livewire\Admin\MataPelajaran\Edit::class)->name('edit');
         });
         
-        // Penugasan Guru
-        Route::prefix('penugasan-guru')->name('penugasan-guru.')->group(function () {
-            Route::get('/', \App\Livewire\Admin\PenugasanGuru\Index::class)->name('index');
-            Route::get('/create', \App\Livewire\Admin\PenugasanGuru\Create::class)->name('create');
-            Route::get('/{id}/edit', \App\Livewire\Admin\PenugasanGuru\Edit::class)->name('edit');
-        });
 
-        
         // Rapor
         Route::prefix('rapor')->name('rapor.')->group(function () {
             Route::get('/', \App\Livewire\Admin\Rapor\Index::class)->name('index');
@@ -91,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:guru,wali_kelas'])->prefix('guru')->name('guru.')->group(function () {
         Route::prefix('input-nilai')->name('input-nilai.')->group(function () {
             Route::get('/', \App\Livewire\Guru\InputNilai\Index::class)->name('index');
-            Route::get('/{kelasId}/{mataPelajaranId}', \App\Livewire\Guru\InputNilai\Form::class)->name('form');
+            Route::get('/{kelasId}/{mataPelajaranId?}', \App\Livewire\Guru\InputNilai\Form::class)->name('form');
         });
     });
     

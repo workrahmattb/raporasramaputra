@@ -15,7 +15,6 @@ class KelasRapor extends Model
         'tahun_ajaran_id',
         'wali_kelas_id',
         'nama',
-        'tingkat',
     ];
 
     // Relationships
@@ -34,11 +33,6 @@ class KelasRapor extends Model
         return $this->belongsToMany(SiswaRapor::class, 'kelas_siswa', 'kelas_id', 'siswa_id')
                     ->withPivot('nomor_absen')
                     ->withTimestamps();
-    }
-
-    public function guruMataPelajaran()
-    {
-        return $this->hasMany(GuruMataPelajaran::class, 'tingkat', 'tingkat');
     }
 
     public function nilais()

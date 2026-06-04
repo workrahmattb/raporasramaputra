@@ -16,7 +16,6 @@ class Nilai extends Model
         'semester_id',
         'guru_id',
         'nilai_pengetahuan',
-        'nilai_keterampilan',
     ];
 
     // Relationships
@@ -48,6 +47,6 @@ class Nilai extends Model
     // Accessors
     public function getRataRataAttribute()
     {
-        return ($this->nilai_pengetahuan + $this->nilai_keterampilan) / 2;
+        return $this->nilai_pengetahuan;
     }
 }

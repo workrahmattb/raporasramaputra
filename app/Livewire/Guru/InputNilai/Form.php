@@ -4,7 +4,6 @@ namespace App\Livewire\Guru\InputNilai;
 
 use Livewire\Component;
 use App\Models\Nilai;
-use App\Models\SiswaRapor;
 use App\Models\KelasRapor;
 use App\Models\MataPelajaran;
 use App\Models\Semester;
@@ -22,16 +21,14 @@ class Form extends Component
 
     protected $rules = [
         'nilaiData.*.nilai_pengetahuan' => 'nullable|numeric|min:0|max:100',
-        'nilaiData.*.nilai_keterampilan' => 'nullable|numeric|min:0|max:100',
     ];
 
-    public function mount($kelasId, $mataPelajaranId)
+    public function mount($kelasId, $mataPelajaranId = null)
     {
         $this->kelasId = $kelasId;
         $this->mataPelajaranId = $mataPelajaranId;
         
         $this->kelas = KelasRapor::findOrFail($kelasId);
-        $this->mataPelajaran = MataPelajaran::findOrFail($mataPelajaranId);
         
         // Get active semester
         $this->semester = Semester::where('is_active', true)->first();
@@ -43,8 +40,25 @@ class Form extends Component
         }
         
         $this->semesterId = $this->semester->id;
-        
+
+        // If no subject selected yet, just show the page without loading grades
+        if (!$this->mataPelajaranId) {
+            return;
+        }
+
+        $this->mataPelajaran = MataPelajaran::findOrFail($mataPelajaranId);
         $this->loadNilaiData();
+    }
+
+    public function updatedMataPelajaranId($value)
+    {
+        if ($value) {
+            $this->mataPelajaran = MataPelajaran::findOrFail($value);
+            $this->loadNilaiData();
+        } else {
+            $this->mataPelajaran = null;
+            $this->nilaiData = [];
+        }
     }
 
     public function loadNilaiData()
@@ -54,7 +68,7 @@ class Form extends Component
             ->join('siswas_rapor', 'kelas_siswa.siswa_id', '=', 'siswas_rapor.id')
             ->where('kelas_siswa.kelas_id', $this->kelasId)
             ->select('siswas_rapor.*', 'kelas_siswa.nomor_absen')
-            ->orderBy('siswas_rapor.nama', 'asc')
+            ->orderBy('kelas_siswa.nomor_absen')
             ->get();
 
         foreach ($siswas as $siswa) {
@@ -70,20 +84,24 @@ class Form extends Component
                 'nama' => $siswa->nama,
                 'nomor_absen' => $siswa->nomor_absen,
                 'nilai_pengetahuan' => $nilai->nilai_pengetahuan ?? '',
-                'nilai_keterampilan' => $nilai->nilai_keterampilan ?? '',
             ];
         }
     }
 
     public function save()
     {
+        if (!$this->mataPelajaranId) {
+            session()->flash('error', 'Silakan pilih mata pelajaran terlebih dahulu.');
+            return;
+        }
+
         $this->validate();
 
-        $guruId = auth()->user()->guruProfile->id ?? null;
+        $guru = auth()->user()->guruProfile;
 
         foreach ($this->nilaiData as $siswaId => $data) {
-            // Only save if at least one nilai is filled
-            if (!empty($data['nilai_pengetahuan']) || !empty($data['nilai_keterampilan'])) {
+            // Only save if nilai is filled
+            if (!empty($data['nilai_pengetahuan'])) {
                 Nilai::updateOrCreate(
                     [
                         'siswa_id' => $siswaId,
@@ -92,9 +110,8 @@ class Form extends Component
                         'semester_id' => $this->semesterId,
                     ],
                     [
-                        'guru_id' => $guruId,
+                        'guru_id' => $guru?->id,
                         'nilai_pengetahuan' => $data['nilai_pengetahuan'] ?: null,
-                        'nilai_keterampilan' => $data['nilai_keterampilan'] ?: null,
                     ]
                 );
             }
@@ -106,6 +123,12 @@ class Form extends Component
 
     public function render()
     {
-        return view('livewire.guru.input-nilai.form')->layout('layouts.app', ['title' => 'Input Nilai']);
+        $allMapels = MataPelajaran::where('sekolah_id', auth()->user()->sekolah_id)
+            ->orderBy('nama')
+            ->get();
+
+        return view('livewire.guru.input-nilai.form', [
+            'allMapels' => $allMapels,
+        ])->layout('layouts.app', ['title' => 'Input Nilai']);
     }
 }

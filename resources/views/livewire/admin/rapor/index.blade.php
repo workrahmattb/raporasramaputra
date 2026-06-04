@@ -47,7 +47,7 @@
                 <select wire:model.live="kelasId" id="kelas" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                     <option value="">Semua Asrama</option>
                     @foreach($kelas as $k)
-                        <option value="{{ $k->id }}">{{ $k->nama }} - Tingkat {{ $k->tingkat }}</option>
+                        <option value="{{ $k->id }}">{{ $k->nama }}</option>
                     @endforeach
                 </select>
             </div>

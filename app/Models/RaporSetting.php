@@ -11,8 +11,8 @@ class RaporSetting extends Model
 
     protected $fillable = [
         'tanggal_rapor',
-        'kepala_sekolah_mts',
-        'kepala_sekolah_ma',
+        'kepala_pengasuhan_asrama',
+        'pimpinan_pondok',
     ];
 
     /**
@@ -23,9 +23,9 @@ class RaporSetting extends Model
         return self::firstOrCreate(
             ['id' => 1],
             [
-                'tanggal_rapor' => '٢ محرم ١٤٤٨, تلوك كوانتن',
-                'kepala_sekolah_mts' => 'S.Pd مارديه روسنيله نينغسيه',
-                'kepala_sekolah_ma' => 'Dina Yulesti, M.Pd',
+                'tanggal_rapor' => 'Teluk Kuantan, ' . now()->locale('id')->isoFormat('D MMMM YYYY'),
+                'kepala_pengasuhan_asrama' => 'Mardiah Resnilawati Ningsih, S.Pd',
+                'pimpinan_pondok' => 'Dina Yulesti, M.Pd',
             ]
         );
     }

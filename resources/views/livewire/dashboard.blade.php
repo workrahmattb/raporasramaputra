@@ -27,7 +27,7 @@
             <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-sm font-medium text-gray-600">Total Guru</p>
+                        <p class="text-sm font-medium text-gray-600">Total Pembina Asrama</p>
                         <p class="text-3xl font-bold text-gray-800 mt-2">{{ $stats['total_guru'] }}</p>
                     </div>
                     <div class="p-3 bg-green-100 rounded-full">
@@ -102,9 +102,9 @@
         </div>
 
     @elseif(auth()->user()->isGuru())
-        <!-- Guru Dashboard -->
+        <!-- Guru / Pembina Asrama Dashboard -->
         <div class="mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Dashboard Guru</h1>
+            <h1 class="text-2xl font-bold text-gray-800">Dashboard Pembina Asrama</h1>
             <p class="text-gray-600">Selamat datang, {{ auth()->user()->name }}</p>
         </div>
 
@@ -127,20 +127,24 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-    @elseif(auth()->user()->isWaliKelas())
-        <!-- Wali Asrama Dashboard -->
-        <div class="mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Dashboard Wali Asrama</h1>
-            <p class="text-gray-600">Selamat datang, {{ auth()->user()->name }}</p>
+            <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Asrama Diampu</p>
+                        <p class="text-3xl font-bold text-gray-800 mt-2">{{ $stats['total_kelas'] ?? 0 }}</p>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Asrama yang Diampu</h3>
-            @if($stats['kelas_wali']->count() > 0)
+            @if(isset($stats['kelas_wali']) && $stats['kelas_wali']->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach($stats['kelas_wali'] as $kelas)
                         <div class="border border-gray-200 rounded-lg p-4">

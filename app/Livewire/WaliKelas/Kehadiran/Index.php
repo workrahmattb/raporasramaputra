@@ -16,12 +16,12 @@ class Index extends Component
     public function mount()
     {
         // Get kelas where current user is wali kelas
-        $this->kelas = KelasRapor::where('wali_kelas_id', auth()->id())
-            ->with('tahunAjaran')
-            ->first();
+        $this->kelas = KelasRapor::whereHas('waliKelas', function($query) {
+            $query->where('user_id', auth()->id());
+        })->with('tahunAjaran')->first();
 
         // Get active semester
-        $activeSemester = Semester::where('status', 'Aktif')->first();
+        $activeSemester = Semester::where('is_active', true)->first();
         $this->semesterId = $activeSemester->id ?? null;
 
         if ($this->kelas && $this->semesterId) {

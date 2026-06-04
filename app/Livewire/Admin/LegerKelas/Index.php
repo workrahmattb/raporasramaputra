@@ -53,13 +53,9 @@ class Index extends Component
         $this->averages = [];
         $this->rankings = [];
 
-        // Get all mata pelajaran taught in this class (by tingkat)
-        $this->mataPelajarans = DB::table('guru_mata_pelajaran')
-            ->join('mata_pelajarans', 'guru_mata_pelajaran.mata_pelajaran_id', '=', 'mata_pelajarans.id')
-            ->where('guru_mata_pelajaran.tingkat', $this->kelas->tingkat)
-            ->select('mata_pelajarans.*')
-            ->distinct()
-            ->orderBy('mata_pelajarans.nama')
+        // Get all mata pelajaran
+        $this->mataPelajarans = MataPelajaran::where('sekolah_id', auth()->user()->sekolah_id)
+            ->orderBy('nama')
             ->get();
 
         // Get all students in this class

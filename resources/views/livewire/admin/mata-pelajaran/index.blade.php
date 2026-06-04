@@ -23,40 +23,14 @@
         </div>
     @endif
 
-    <!-- Search & Filter -->
+    <!-- Search -->
     <div class="mb-6 bg-white rounded-lg shadow-md p-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!-- Search -->
-            <div class="relative">
-                <input wire:model.live="search" type="text" placeholder="Cari kode atau nama mata pelajaran..." 
-                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </div>
-            
-            <!-- Filter Kelompok -->
-            <div>
-                <select wire:model.live="kelompok" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="">Semua Kelompok</option>
-                    <option value="A">Kelompok A - Umum</option>
-                    <option value="B">Kelompok B - Agama</option>
-                    <option value="C">Kelompok C - Muatan Lokal</option>
-                </select>
-            </div>
-
-            <!-- Filter Tingkat -->
-            <div>
-                <select wire:model.live="tingkat" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <option value="">Semua Tingkat</option>
-                    <option value="7">Asrama 7</option>
-                    <option value="8">Asrama 8</option>
-                    <option value="9">Asrama 9</option>
-                    <option value="10">Asrama 10</option>
-                    <option value="11">Asrama 11</option>
-                    <option value="12">Asrama 12</option>
-                </select>
-            </div>
+        <div class="relative">
+            <input wire:model.live="search" type="text" placeholder="Cari kode atau nama mata pelajaran..." 
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
         </div>
     </div>
 
@@ -68,8 +42,6 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Mata Pelajaran</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Arabic</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelompok</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tingkat</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">KKM</th>
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -130,23 +102,6 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                {{ $mataPelajaran->kelompok === 'A' ? 'bg-blue-100 text-blue-800' : '' }}
-                                {{ $mataPelajaran->kelompok === 'B' ? 'bg-green-100 text-green-800' : '' }}
-                                {{ $mataPelajaran->kelompok === 'C' ? 'bg-purple-100 text-purple-800' : '' }}">
-                                Kelompok {{ $mataPelajaran->kelompok }}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            @if($mataPelajaran->tingkat)
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                    Asrama {{ $mataPelajaran->tingkat }}
-                                </span>
-                            @else
-                                <span class="text-sm text-gray-400">-</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">{{ $mataPelajaran->kkm }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -160,9 +115,9 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-12 text-center text-gray-500">
+                        <td colspan="5" class="px-6 py-12 text-center text-gray-500">
                             <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path>
                             </svg>
                             <p class="mt-2">Belum ada data mata pelajaran</p>
                         </td>

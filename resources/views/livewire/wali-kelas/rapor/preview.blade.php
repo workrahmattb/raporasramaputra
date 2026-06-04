@@ -62,8 +62,6 @@
                                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">No</th>
                                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Mata Pelajaran</th>
                                 <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Pengetahuan</th>
-                                <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Keterampilan</th>
-                                <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Rata-rata</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -71,11 +69,7 @@
                                 <tr>
                                     <td class="px-4 py-3 text-sm">{{ $index + 1 }}</td>
                                     <td class="px-4 py-3 text-sm">{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
-                                    <td class="px-4 py-3 text-sm text-center">{{ $nilai->nilai_pengetahuan ?? '-' }}</td>
-                                    <td class="px-4 py-3 text-sm text-center">{{ $nilai->nilai_keterampilan ?? '-' }}</td>
-                                    <td class="px-4 py-3 text-sm text-center font-semibold">
-                                        {{ $nilai->nilai_pengetahuan && $nilai->nilai_keterampilan ? number_format(($nilai->nilai_pengetahuan + $nilai->nilai_keterampilan) / 2, 2) : '-' }}
-                                    </td>
+                                    <td class="px-4 py-3 text-sm text-center font-semibold">{{ $nilai->nilai_pengetahuan ?? '-' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -91,21 +85,17 @@
             <h2 class="text-xl font-bold text-gray-800 mb-4 border-b-2 border-blue-600 pb-2">Kehadiran</h2>
             @if($kehadiran)
                 <div class="grid grid-cols-4 gap-4">
-                    <div class="bg-green-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-600">Hadir</p>
-                        <p class="text-2xl font-bold text-green-600">{{ $kehadiran->hadir ?? 0 }}</p>
-                    </div>
                     <div class="bg-yellow-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-600">Izin</p>
-                        <p class="text-2xl font-bold text-yellow-600">{{ $kehadiran->izin ?? 0 }}</p>
+                        <p class="text-sm text-gray-600">Sakit</p>
+                        <p class="text-2xl font-bold text-yellow-600">{{ $kehadiran->sakit ?? 0 }}</p>
                     </div>
                     <div class="bg-blue-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-600">Sakit</p>
-                        <p class="text-2xl font-bold text-blue-600">{{ $kehadiran->sakit ?? 0 }}</p>
+                        <p class="text-sm text-gray-600">Izin</p>
+                        <p class="text-2xl font-bold text-blue-600">{{ $kehadiran->izin ?? 0 }}</p>
                     </div>
                     <div class="bg-red-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-600">Alpha</p>
-                        <p class="text-2xl font-bold text-red-600">{{ $kehadiran->alpha ?? 0 }}</p>
+                        <p class="text-sm text-gray-600">Tanpa Keterangan</p>
+                        <p class="text-2xl font-bold text-red-600">{{ $kehadiran->tanpa_keterangan ?? 0 }}</p>
                     </div>
                 </div>
             @else

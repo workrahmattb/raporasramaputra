@@ -9,6 +9,7 @@ use App\Models\Semester;
 class Index extends Component
 {
     public $semesterId;
+    public $semester;
     public $kelas;
     public $siswas = [];
     public $catatan = [];

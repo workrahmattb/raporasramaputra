@@ -8,19 +8,19 @@ use App\Models\RaporSetting;
 class Edit extends Component
 {
     public $tanggal_rapor = '';
-    public $kepala_sekolah_mts = '';
-    public $kepala_sekolah_ma = '';
+    public $kepala_pengasuhan_asrama = '';
+    public $pimpinan_pondok = '';
 
     protected $rules = [
         'tanggal_rapor' => 'required|string|max:255',
-        'kepala_sekolah_mts' => 'required|string|max:255',
-        'kepala_sekolah_ma' => 'required|string|max:255',
+        'kepala_pengasuhan_asrama' => 'required|string|max:255',
+        'pimpinan_pondok' => 'required|string|max:255',
     ];
 
     protected $messages = [
         'tanggal_rapor.required' => 'Tanggal rapor harus diisi',
-        'kepala_sekolah_mts.required' => 'Nama Kepala Sekolah MTs harus diisi',
-        'kepala_sekolah_ma.required' => 'Nama Kepala Sekolah MA harus diisi',
+        'kepala_pengasuhan_asrama.required' => 'Nama Kepala Pengasuhan Asrama harus diisi',
+        'pimpinan_pondok.required' => 'Nama Pimpinan Pondok Pesantren harus diisi',
     ];
 
     public function mount()
@@ -28,8 +28,8 @@ class Edit extends Component
         $settings = RaporSetting::getSettings();
         
         $this->tanggal_rapor = $settings->tanggal_rapor;
-        $this->kepala_sekolah_mts = $settings->kepala_sekolah_mts;
-        $this->kepala_sekolah_ma = $settings->kepala_sekolah_ma;
+        $this->kepala_pengasuhan_asrama = $settings->kepala_pengasuhan_asrama;
+        $this->pimpinan_pondok = $settings->pimpinan_pondok;
     }
 
     public function save()
@@ -39,8 +39,8 @@ class Edit extends Component
         $settings = RaporSetting::getSettings();
         $settings->update([
             'tanggal_rapor' => $this->tanggal_rapor,
-            'kepala_sekolah_mts' => $this->kepala_sekolah_mts,
-            'kepala_sekolah_ma' => $this->kepala_sekolah_ma,
+            'kepala_pengasuhan_asrama' => $this->kepala_pengasuhan_asrama,
+            'pimpinan_pondok' => $this->pimpinan_pondok,
         ]);
 
         session()->flash('message', 'Pengaturan rapor berhasil disimpan.');

@@ -54,46 +54,6 @@
                     @enderror
                 </div>
 
-                <!-- Kelompok -->
-                <div>
-                    <label for="kelompok" class="block text-sm font-medium text-gray-700 mb-2">
-                        Kelompok <span class="text-red-500">*</span>
-                    </label>
-                    <select wire:model="kelompok" id="kelompok"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('kelompok') border-red-500 @enderror">
-                        <option value="A">Kelompok A - Umum</option>
-                        <option value="B">Kelompok B - Agama</option>
-                        <option value="C">Kelompok C - Muatan Lokal</option>
-                    </select>
-                    @error('kelompok')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500">
-                        A: Matematika, IPA, IPS, dll | B: Al-Quran, Hadits, Fiqih, dll | C: Bahasa Daerah, Keterampilan, dll
-                    </p>
-                </div>
-
-                <!-- Tingkat -->
-                <div>
-                    <label for="tingkat" class="block text-sm font-medium text-gray-700 mb-2">
-                        Tingkat/Asrama
-                    </label>
-                    <select wire:model="tingkat" id="tingkat"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('tingkat') border-red-500 @enderror">
-                        <option value="">Pilih Tingkat (Opsional)</option>
-                        <option value="7">Asrama 7</option>
-                        <option value="8">Asrama 8</option>
-                        <option value="9">Asrama 9</option>
-                        <option value="10">Asrama 10</option>
-                        <option value="11">Asrama 11</option>
-                        <option value="12">Asrama 12</option>
-                    </select>
-                    @error('tingkat')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <p class="mt-1 text-xs text-gray-500">Pilih tingkat asrama untuk mata pelajaran ini</p>
-                </div>
-
                 <!-- KKM -->
                 <div>
                     <label for="kkm" class="block text-sm font-medium text-gray-700 mb-2">

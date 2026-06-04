@@ -11,8 +11,6 @@ class Index extends Component
     use WithPagination;
 
     public $search = '';
-    public $kelompok = '';
-    public $tingkat = '';
     public $confirmingDeletion = false;
     public $mataPelajaranToDelete = null;
 
@@ -20,19 +18,9 @@ class Index extends Component
     public $editingNamaArabic = [];
     public $namaArabicValues = [];
 
-    protected $queryString = ['search', 'kelompok', 'tingkat'];
+    protected $queryString = ['search'];
 
     public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingKelompok()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingTingkat()
     {
         $this->resetPage();
     }
@@ -87,13 +75,6 @@ class Index extends Component
                       ->orWhere('kode', 'like', '%' . $this->search . '%');
                 });
             })
-            ->when($this->kelompok, function($query) {
-                $query->where('kelompok', $this->kelompok);
-            })
-            ->when($this->tingkat, function($query) {
-                $query->where('tingkat', $this->tingkat);
-            })
-            ->orderBy('kelompok')
             ->orderBy('nama')
             ->paginate(15);
 

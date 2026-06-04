@@ -7,7 +7,7 @@
     <style>
         @page {
             margin: 10mm 15mm;
-            size: 215mm 330mm; /* F4/Folio */
+            size: 215mm 330mm;
         }
         
         body {
@@ -17,9 +17,6 @@
             line-height: 1.3;
         }
 
-
-
-        /* Header Styles */
         .header-table {
             width: 100%;
             border-bottom: 4px solid #000;
@@ -34,36 +31,29 @@
         
         .header-text {
             text-align: center;
-            color: #020302ff; /* Green Text */
         }
         
         .header-title {
-            font-size: 29pt;
+            font-size: 24pt;
             font-weight: 800;
             margin: 0;
             letter-spacing: 1px;
-            font-family: DejaVu Sans
         }
         
         .header-subtitle {
-            font-size: 25pt;
+            font-size: 14pt;
             font-weight: 600;
             margin: 5px 0;
-            color: #030303ff; /* Yellow/Gold Accent */
-            font-family: DejaVu Sans
         }
         
         .header-address {
             font-size: 9pt;
             margin: 0;
-            color: #000;
+            color: #555;
         }
 
-        /* Identity Section */
         .identity-box {
-            background-color: #fff;
             border: 3px double #000;
-            border-radius: 0px;
             padding: 15px;
             margin-bottom: 25px;
         }
@@ -72,65 +62,45 @@
             width: 100%;
             border: none;
             border-collapse: collapse;
-            cellspacing: 0;
         }
 
         .identity-table td {
-            padding: 2px 4px;
+            padding: 3px 6px;
             vertical-align: top;
             border: none;
         }
 
         .label {
             font-weight: bold;
-            color: #000;
-            width: 130px;
-            font-family: DejaVu Sans; 
-            direction: rtl;
-            text-align: right;
+            width: 140px;
         }
 
         .separator {
-            width: 2px;
+            width: 15px;
             text-align: center;
-            padding: 0;
         }
 
         .value {
             font-weight: 500;
-            color: #000;
-            text-align: right;
         }
 
-        /* Section Titles */
         .section-header {
-            /* background-color: #006025; */
-            color: #080808ff;
             padding: 8px 15px;
-            font-size: 16pt;
+            font-size: 14pt;
             font-weight: bold;
-            border-radius: 20px 0 20px 0; /* Futuristic shape */
             margin-bottom: 15px;
             display: inline-block;
-            white-space: nowrap;
-            /* box-shadow: 2px 2px 0px #dcb000; Yellow shadow */
-            text-align: right;
-            direction: rtl;
         }
 
-        /* Data Tables */
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 25px;
-            /* Double border effect - outer thick border */
             border: 4px double #000;
-            background-color: #fff;
         }
 
         .data-table th {
-            background-color: #fff;
-            color: #000;
+            background-color: #f5f5f5;
             padding: 10px;
             font-weight: bold;
             text-transform: uppercase;
@@ -142,65 +112,27 @@
             padding: 8px 10px;
             border: 1px solid #000;
             font-size: 10pt;
-            background-color: #fff;
-            color: #000;
-        }
-
-        .data-table tr:nth-child(even) td {
-            background-color: #fff; /* Remove striped rows, keep white */
         }
 
         .center { text-align: center; }
         .right { text-align: right; }
-        .bold { font-weight: bold; }
 
-        /* Grades Specifics */
         .grade-score {
             font-weight: bold;
-            color: #000;
         }
 
-        /* Predikat Colors - all black now */
-        .predikat-ممتاز { color: #000; font-weight: bold; }
-        .predikat-جيد { color: #000; }
-        .predikat-جيد { color: #000; }
-        .predikat-مقبول { color: #000; }
-        .predikat-ضعيف { color: #000; font-weight: bold; }
+        .predikat-istimewa { color: #000; font-weight: bold; }
+        .predikat-baik-sekali { color: #000; font-weight: bold; }
+        .predikat-baik { color: #000; }
+        .predikat-cukup { color: #000; }
+        .predikat-kurang { color: #000; font-weight: bold; }
 
-        /* Attendance Box */
-        .attendance-container {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .attendance-box {
-            display: inline-block;
-            width: 30%;
-            text-align: center;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-right: 2%;
-            background: #fff;
-        }
-        
-        .attendance-box.sakit { border-top: 3px solid #000; }
-        .attendance-box.izin { border-top: 3px solid #000; }
-        .attendance-box.alpha { border-top: 3px solid #000; }
-
-        .att-label { font-size: 9pt; color: #000; margin-bottom: 5px; }
-        .att-value { font-size: 14pt; font-weight: bold; color: #000; }
-
-        /* Notes */
         .notes {
             border: 2px dashed #000;
             padding: 15px;
-            border-radius: 10px;
-            background-color: #fff;
             min-height: 60px;
-            direction: rtl;
         }
 
-        /* Footer */
         .footer-table {
             width: 100%;
             margin-top: 40px;
@@ -208,7 +140,7 @@
         }
         
         .sign-col {
-            width: 33%;
+            width: 25%;
             text-align: center;
             vertical-align: top;
         }
@@ -216,43 +148,29 @@
         .date-line {
             text-align: right;
             margin-bottom: 10px;
-            color: #000;
-            font-style: italic;
             padding-right: 20px;
-            text-decoration: underline;
-            display: inline-block;
-            float: right;
         }
         
         .sign-role {
             font-size: 10pt;
-            color: #000;
+            font-weight: bold;
         }
 
         .sign-spacer {
-            height: 300px;
+            height: 250px;
         }
         
         .sign-name {
             font-weight: bold;
             font-size: 13pt;
-            color: #000;
         }
 
-        .text-right {
-            text-align: right;
-            font-family: DejaVu Sans;
-            direction: rtl;
+        .page-break {
+            page-break-after: always;
         }
-
-        
-
-        
-
     </style>
 </head>
 <body>
-
 
     <!-- Header -->
     <table class="header-table">
@@ -262,119 +180,94 @@
             </td>
             <td width="85%" align="center">
                 <div class="header-text">
-                    <h1 class="header-title">كشف الدرجات</h1>
-                    <h2 class="header-subtitle">لطلبة معهد شفاعة الرسول الإسلامي</h2>
-                    <!-- <p class="header-address">Teluk Kuantan, Kabupaten Kuantan Singingi, Riau</p>
-                    <p class="header-address">Website: www.syafaaturrasul.com | Email: info@syafaaturrasul.com</p> -->
+                    <h1 class="header-title">RAPOR ASRAMA</h1>
+                    <h2 class="header-subtitle">PONDOK PESANTREN SYAFA'ATURRASUL</h2>
                 </div>
             </td>
         </tr>
     </table>
 
-<!-- Identity -->
+    <!-- Identity -->
     <div class="identity-box">
         <table class="identity-table">
             <tr>
-                <td style="font-size:12px; font-family: DejaVu Sans; text-align: right;">
-                    @php
-                        if (!function_exists('toArabicNumerals')) {
-                            function toArabicNumerals($number) {
-                                $latinNumerals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-                                $arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-                                return str_replace($latinNumerals, $arabicNumerals, $number);
-                            }
-                        }
-                        $tahunAjaran = $semester->tahunAjaran->tahun ?? '-';
-                    @endphp
-                    {{ toArabicNumerals($tahunAjaran) }}
-                </td>
+                <td class="label">Nama Siswa</td>
                 <td class="separator">:</td>
-                <td class="label">العام الدراسي</td>
-                <td style="font-size:12px; font-family: DejaVu Sans; text-align: right;">{{ strtoupper($siswa->nama_arabic) }}</td>
+                <td class="value">{{ $siswa->nama }}</td>
+                <td width="40%"></td>
+                <td class="label">Asrama</td>
                 <td class="separator">:</td>
-                <td class="label">اسم الطالبة</td>
+                <td class="value">{{ $kelas->nama ?? '-' }}</td>
             </tr>
             <tr>
-                <td class="value" style="text-align: right;">
-                    @php
-                        $semesterNama = $semester->nama ?? '';
-                        $semesterArabic = '-';
-                        
-                        if (stripos($semesterNama, 'ganjil') !== false || stripos($semesterNama, '1') !== false) {
-                            $semesterArabic = 'الأول';
-                        } elseif (stripos($semesterNama, 'genap') !== false || stripos($semesterNama, '2') !== false) {
-                            $semesterArabic = 'الثاني';
-                        }
-                    @endphp
-                    {{ $semesterArabic }}
-                </td>
+                <td class="label">NISN</td>
                 <td class="separator">:</td>
-                <td class="label">الدور</td>
-                <td class="value" style="text-align: right;">{{ $kelas->nama ?? '-' }}</td>
+                <td class="value">{{ $siswa->nisn ?? '-' }}</td>
+                <td></td>
+                <td class="label">Semester</td>
                 <td class="separator">:</td>
-                <td class="label">الفصل</td>
+                <td class="value">{{ $semester->nama ?? '-' }}</td>
+            </tr>
+            <tr>
+                <td class="label">Tahun Ajaran</td>
+                <td class="separator">:</td>
+                <td class="value">{{ $semester->tahunAjaran->tahun ?? '-' }}</td>
+                <td></td>
+                <td class="label">Wali Asrama</td>
+                <td class="separator">:</td>
+                <td class="value">{{ $kelas->waliKelas->nama ?? '-' }}</td>
             </tr>
         </table>
     </div>
 
     <!-- Academic Scores -->
-    <div class="section-header">تحقيق الكفاءات والتحصيل الأكاديمي</div>
+    <div class="section-header">PENCAPAIAN KOMPETENSI DAN HASIL BELAJAR</div>
     
     @if(count($nilais) > 0)
         <table class="data-table">
             <thead>
                 <tr>
-                    <th width="25%"
-                        style="font-size:20px; font-family: DejaVu Sans; direction: rtl;">
-                        تقديرا
-                    </th>
-                    <th width="20%"
-                        style="font-size:20px; font-family: DejaVu Sans; direction: rtl;">
-                        رقما
-                    </th>
-                    <th width="50%"
-                        style="font-size:20px; font-family: DejaVu Sans; direction: rtl;">
-                        المواد الدراسية
-                    </th>
-                    <th width="5%"
-                        style="font-size:20px; font-family: DejaVu Sans; direction: rtl;">
-                        النمرة
-                    </th>
+                    <th width="5%">No</th>
+                    <th width="50%">Mata Pelajaran</th>
+                    <th width="20%">Nilai</th>
+                    <th width="25%">Predikat</th>
                 </tr>
-
             </thead>
             <tbody>
                 @foreach($nilais as $index => $nilai)
                     @php
-                        // Get nilai_pengetahuan, treat null and empty as 0
                         $nilaiPengetahuan = $nilai->nilai_pengetahuan ?? 0;
-                        
-                        // Check if nilai is empty, null, or 0
                         $isEmptyNilai = empty($nilaiPengetahuan) || $nilaiPengetahuan == 0;
                         
-                        // Only calculate predikat if nilai is not empty
                         $predikat = $isEmptyNilai ? '-' : match(true) {
-                            $nilaiPengetahuan >= 90 => 'ممتاز',
-                            $nilaiPengetahuan >= 85 => 'جيد جدًا',
-                            $nilaiPengetahuan >= 75 => 'جيد',
-                            $nilaiPengetahuan >= 70 => 'مقبول',
-                            default => 'ضعيف',
+                            $nilaiPengetahuan >= 90 => 'Istimewa',
+                            $nilaiPengetahuan >= 85 => 'Baik Sekali',
+                            $nilaiPengetahuan >= 75 => 'Baik',
+                            $nilaiPengetahuan >= 70 => 'Cukup',
+                            default => 'Kurang',
                         };
                         
-                        $predClass = $isEmptyNilai ? '' : 'predikat-' . $predikat;
+                        $predClass = '';
+                        if (!$isEmptyNilai) {
+                            $predClass = match($predikat) {
+                                'Istimewa' => 'predikat-istimewa',
+                                'Baik Sekali' => 'predikat-baik-sekali',
+                                'Baik' => 'predikat-baik',
+                                'Cukup' => 'predikat-cukup',
+                                'Kurang' => 'predikat-kurang',
+                                default => '',
+                            };
+                        }
                     @endphp
                     <tr>
-                        <td class="center {{ $predClass }}">
-                            {{ $predikat }}
-                        </td>
-                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : toArabicNumerals($nilaiPengetahuan) }}</td>
-                        <td class="text-right">{{ $nilai->mataPelajaran->namapelajaran_arabic ?? '-' }}</td>
-                        <td class="center">{{ toArabicNumerals($index + 1) }}</td>
+                        <td class="center">{{ $index + 1 }}</td>
+                        <td>{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
+                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}</td>
+                        <td class="center {{ $predClass }}">{{ $predikat }}</td>
                     </tr>
                 @endforeach
                 
                 @php
-                    // Calculate total and average
                     $totalNilai = 0;
                     $countNilai = 0;
                     
@@ -389,108 +282,68 @@
                     $average = $countNilai > 0 ? round($totalNilai / $countNilai, 2) : 0;
                 @endphp
                 
-                <!-- Total Row -->
-                <tr style="background-color: #fff; font-weight: bold; border: 1px solid #000;">
-                    <td class="center grade-score" style="font-size:14px; padding: 8px; color: #000;">
-                        {{ $totalNilai > 0 ? toArabicNumerals($totalNilai) : '-' }}
-                    </td>
-                    <td colspan="2" class="center" style="font-size:16px; font-family: DejaVu Sans; direction: rtl; padding: 8px; color: #000;">
-                        المجموع
-                    </td>
+                <tr style="font-weight: bold; border: 1px solid #000;">
+                    <td colspan="2" class="center">Jumlah</td>
+                    <td class="center grade-score">{{ $totalNilai > 0 ? number_format($totalNilai, 0) : '-' }}</td>
                     <td></td>
                 </tr>
                 
-                <!-- Average Row -->
-                <tr style="background-color: #fff; font-weight: bold; border: 1px solid #000;">
-                    <td class="center grade-score" style="font-size:14px; padding: 8px; color: #000;">
-                        {{ $average > 0 ? toArabicNumerals(number_format($average, 2)) : '-' }}
-                    </td>
-                    <td colspan="2" class="center" style="font-size:16px; font-family: DejaVu Sans; direction: rtl; padding: 8px; color: #000;">
-                        المعدل
-                    </td>
+                <tr style="font-weight: bold; border: 1px solid #000;">
+                    <td colspan="2" class="center">Rata-rata</td>
+                    <td class="center grade-score">{{ $average > 0 ? number_format($average, 2) : '-' }}</td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
     @else
-        <p class="center" style="font-style: italic; color: #777; margin: 20px;">Belum ada data nilai akademik</p>
+        <p class="center" style="font-style: italic; color: #777; margin: 20px;">Belum ada data nilai</p>
     @endif
 
-    <!-- Attendance
-    <div class="section-header">B. KETIDAKHADIRAN</div>
-    
-    
-    <table width="100%" style="margin-bottom: 20px;">
-        <tr>
-            <td width="33%" style="padding-right: 10px;">
-                <div style="border: 1px solid #ddd; border-top: 3px solid #3498db; padding: 10px; text-align: center; background: #fff;">
-                    <div class="att-label">SAKIT</div>
-                    <div class="att-value">{{ $kehadiran->sakit ?? 0 }}</div>
-                    <div style="font-size: 8pt; color: #999;">Hari</div>
-                </div>
-            </td>
-            <td width="33%" style="padding: 0 5px;">
-                <div style="border: 1px solid #ddd; border-top: 3px solid #f1c40f; padding: 10px; text-align: center; background: #fff;">
-                    <div class="att-label">IZIN</div>
-                    <div class="att-value">{{ $kehadiran->izin ?? 0 }}</div>
-                    <div style="font-size: 8pt; color: #999;">Hari</div>
-                </div>
-            </td>
-            <td width="33%" style="padding-left: 10px;">
-                <div style="border: 1px solid #ddd; border-top: 3px solid #e74c3c; padding: 10px; text-align: center; background: #fff;">
-                    <div class="att-label">ALPHA</div>
-                    <div class="att-value">{{ $kehadiran->alpha ?? 0 }}</div>
-                    <div style="font-size: 8pt; color: #999;">Hari</div>
-                </div>
-            </td>
-        </tr>
-    </table> -->
-
     <!-- Notes -->
-    <div class="section-header">الملاحظات</div>
+    <div class="section-header">CATATAN WALI ASRAMA</div>
     <div class="notes">
         @if($catatan && $catatan->catatan)
             {{ $catatan->catatan }}
         @else
-            <span style="color: #999; font-style: italic; font-family: DejaVu Sans; direction: rtl;">واصل تحسين إنجازاتك الدراسية، واحرص على الجد في الدراسة والعبادة</span>
+            <span style="color: #999; font-style: italic;">Tidak ada catatan.</span>
         @endif
     </div>
 
-    <!-- Signatures Tulis Tanggal Cetak Rapornya disini -->
+    <!-- Signatures -->
     <div class="date-line">
-        <span style="font-family: DejaVu Sans; font-size: 18px; direction: rtl;">{{ $settings->tanggal_rapor ?? '٢ محرم ١٤٤٨, تلوك كوانتن' }}</span>
+        <span>{{ $settings->tanggal_rapor ?? now()->locale('id')->isoFormat('D MMMM YYYY') }}</span>
     </div>
     
     <table class="footer-table">
         <tr>
             <td class="sign-col">
-                <div class="sign-role">رئيسة المدرسة</div>
+                <div class="sign-role">PIMPINAN PONDOK PESANTREN</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
-                @php
-                    $tingkat = $kelas->tingkat ?? null;
-                    $kepalaMadrasah = $settings->kepala_sekolah_ma ?? 'Dina Yulesti, M.Pd';
-                    
-                    if (in_array($tingkat, [7, 8, 9, '7', '8', '9', 'VII', 'VIII', 'IX'])) {
-                        $kepalaMadrasah = $settings->kepala_sekolah_mts ?? 'S.Pd مارديه روسنيله نينغسيه';
-                    }
-                @endphp
-                <div class="sign-name">{{ $kepalaMadrasah }}</div>
+                <div class="sign-name">{{ $settings->pimpinan_pondok ?? '-' }}</div>
             </td>
             <td class="sign-col">
-                <div class="sign-role">ولية الفصل</div>
+                <div class="sign-role">KEPALA PENGASUHAN ASRAMA</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $settings->kepala_pengasuhan_asrama ?? '-' }}</div>
+            </td>
+            <td class="sign-col">
+                <div class="sign-role">WALI ASRAMA</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-name">
-                    {{ $kelas->waliKelas->nama_arabic ?? $kelas->waliKelas->nama ?? '' }}
+                    {{ $kelas->waliKelas->nama ?? '' }}
                 </div>
             </td>
             <td class="sign-col">
-                <div class="sign-role">ولي الامر</div>  
+                <div class="sign-role">ORANG TUA / WALI</div>  
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
@@ -499,11 +352,6 @@
             </td>
         </tr>
     </table>
-
-    <!-- Student Name in Latin (Bottom Left) -->
-    <div style="margin-top: 20px; font-size: 9pt; color: #666;">
-        <strong>Nama Siswa:</strong> {{ $siswa->nama }}
-    </div>
 
 </body>
 </html>

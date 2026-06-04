@@ -23,38 +23,38 @@
                     Tanggal Rapor <span class="text-red-500">*</span>
                 </label>
                 <input wire:model="tanggal_rapor" type="text" id="tanggal_rapor" 
-                    placeholder="Contoh: ٢ محرم ١٤٤٨, تلوك كوانتن"
+                    placeholder="Contoh: Teluk Kuantan, 15 Januari 2026"
                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('tanggal_rapor') border-red-500 @enderror">
-                <p class="mt-1 text-sm text-gray-500">Format bebas, bisa menggunakan teks Arabic atau Latin</p>
+                <p class="mt-1 text-sm text-gray-500">Format bebas, contoh: Teluk Kuantan, 15 Januari 2026</p>
                 @error('tanggal_rapor')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Kepala Sekolah MTs -->
+            <!-- Kepala Pengasuhan Asrama -->
             <div class="mb-6">
-                <label for="kepala_sekolah_mts" class="block text-sm font-medium text-gray-700 mb-2">
-                    Nama Kepala Sekolah MTs (Tingkat 7-9) <span class="text-red-500">*</span>
+                <label for="kepala_pengasuhan_asrama" class="block text-sm font-medium text-gray-700 mb-2">
+                    Nama Kepala Pengasuhan Asrama <span class="text-red-500">*</span>
                 </label>
-                <input wire:model="kepala_sekolah_mts" type="text" id="kepala_sekolah_mts" 
-                    placeholder="Contoh: S.Pd مارديه روسنيله نينغسيه"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('kepala_sekolah_mts') border-red-500 @enderror">
-                <p class="mt-1 text-sm text-gray-500">Nama kepala sekolah untuk siswa kelas 7, 8, dan 9</p>
-                @error('kepala_sekolah_mts')
+                <input wire:model="kepala_pengasuhan_asrama" type="text" id="kepala_pengasuhan_asrama" 
+                    placeholder="Contoh: Mardiah Resnilawati Ningsih, S.Pd"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('kepala_pengasuhan_asrama') border-red-500 @enderror">
+                <p class="mt-1 text-sm text-gray-500">Nama kepala pengasuhan asrama yang tertera di rapor</p>
+                @error('kepala_pengasuhan_asrama')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Kepala Sekolah MA -->
+            <!-- Pimpinan Pondok Pesantren -->
             <div class="mb-6">
-                <label for="kepala_sekolah_ma" class="block text-sm font-medium text-gray-700 mb-2">
-                    Nama Kepala Sekolah MA (Tingkat 10-12) <span class="text-red-500">*</span>
+                <label for="pimpinan_pondok" class="block text-sm font-medium text-gray-700 mb-2">
+                    Nama Pimpinan Pondok Pesantren <span class="text-red-500">*</span>
                 </label>
-                <input wire:model="kepala_sekolah_ma" type="text" id="kepala_sekolah_ma" 
+                <input wire:model="pimpinan_pondok" type="text" id="pimpinan_pondok" 
                     placeholder="Contoh: Dina Yulesti, M.Pd"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('kepala_sekolah_ma') border-red-500 @enderror">
-                <p class="mt-1 text-sm text-gray-500">Nama kepala sekolah untuk siswa kelas 10, 11, dan 12</p>
-                @error('kepala_sekolah_ma')
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('pimpinan_pondok') border-red-500 @enderror">
+                <p class="mt-1 text-sm text-gray-500">Nama pimpinan pondok pesantren yang tertera di rapor</p>
+                @error('pimpinan_pondok')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>

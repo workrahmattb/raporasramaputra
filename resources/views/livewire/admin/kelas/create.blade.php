@@ -64,32 +64,6 @@
                     @enderror
                 </div>
 
-                <!-- Tingkat -->
-                <div>
-                    <label for="tingkat" class="block text-sm font-medium text-gray-700 mb-2">
-                        Tingkat <span class="text-red-500">*</span>
-                    </label>
-                    <select wire:model="tingkat" id="tingkat"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('tingkat') border-red-500 @enderror">
-                        <option value="">Pilih Tingkat</option>
-                        <option value="1">Asrama 1</option>
-                        <option value="2">Asrama 2</option>
-                        <option value="3">Asrama 3</option>
-                        <option value="4">Asrama 4</option>
-                        <option value="5">Asrama 5</option>
-                        <option value="6">Asrama 6</option>
-                        <option value="7">Asrama 7</option>
-                        <option value="8">Asrama 8</option>
-                        <option value="9">Asrama 9</option>
-                        <option value="10">Asrama 10</option>
-                        <option value="11">Asrama 11</option>
-                        <option value="12">Asrama 12</option>
-                    </select>
-                    @error('tingkat')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
             </div>
 
             <!-- Actions -->
