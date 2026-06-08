@@ -69,7 +69,7 @@ class SelectAcademicPeriod extends Component
         session()->flash('message', 'Periode akademik berhasil dipilih.');
 
         // Redirect to dashboard
-        return redirect()->route('dashboard');
+        $this->redirectRoute('dashboard', navigate: true);
     }
 
     public function render()

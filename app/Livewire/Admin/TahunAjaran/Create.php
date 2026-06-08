@@ -62,7 +62,7 @@ class Create extends Component
         }
 
         session()->flash('message', 'Tahun ajaran berhasil ditambahkan.');
-        return redirect()->route('admin.tahun-ajaran.index');
+        $this->redirectRoute('admin.tahun-ajaran.index', navigate: true);
     }
 
     public function render()

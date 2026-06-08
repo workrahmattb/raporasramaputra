@@ -36,7 +36,7 @@ class Create extends Component
         ]);
 
         session()->flash('message', 'Kelas berhasil ditambahkan.');
-        return redirect()->route('admin.kelas.index');
+        $this->redirectRoute('admin.kelas.index', navigate: true);
     }
 
     public function render()

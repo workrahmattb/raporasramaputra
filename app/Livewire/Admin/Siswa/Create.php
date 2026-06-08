@@ -70,7 +70,7 @@ class Create extends Component
         ]);
 
         session()->flash('message', 'Siswa berhasil ditambahkan.');
-        return redirect()->route('admin.siswa.index');
+        $this->redirectRoute('admin.siswa.index', navigate: true);
     }
 
     public function render()

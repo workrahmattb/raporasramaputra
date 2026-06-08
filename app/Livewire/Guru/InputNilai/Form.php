@@ -36,7 +36,8 @@ class Form extends Component
         // Validate that an active semester exists
         if (!$this->semester) {
             session()->flash('error', 'Tidak ada semester aktif. Silakan hubungi admin untuk mengaktifkan semester.');
-            return redirect()->route('guru.input-nilai.index');
+            $this->redirectRoute('guru.input-nilai.index', navigate: true);
+            return;
         }
         
         $this->semesterId = $this->semester->id;

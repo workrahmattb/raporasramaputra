@@ -103,7 +103,7 @@ class Form extends Component
 
         session()->flash('message', 'Data kehadiran berhasil disimpan.');
         
-        return redirect()->route('wali-kelas.kehadiran.index');
+        $this->redirectRoute('wali-kelas.kehadiran.index', navigate: true);
     }
 
     public function render()

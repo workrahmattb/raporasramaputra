@@ -98,7 +98,7 @@ class Form extends Component
 
         session()->flash('message', 'Catatan wali kelas berhasil disimpan.');
         
-        return redirect()->route('wali-kelas.catatan.index');
+        $this->redirectRoute('wali-kelas.catatan.index', navigate: true);
     }
 
     public function render()

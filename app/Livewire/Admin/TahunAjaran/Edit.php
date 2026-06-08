@@ -47,7 +47,7 @@ class Edit extends Component
         ]);
 
         session()->flash('message', 'Tahun ajaran berhasil diperbarui.');
-        return redirect()->route('admin.tahun-ajaran.index');
+        $this->redirectRoute('admin.tahun-ajaran.index', navigate: true);
     }
 
     public function render()

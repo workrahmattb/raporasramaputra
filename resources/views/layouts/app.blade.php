@@ -110,7 +110,7 @@
                     <div class="px-4 mb-4">
                         <p class="text-xs font-semibold text-blue-300 uppercase tracking-wider">Pembina Asrama</p>
                     </div>
-                    <a href="{{ route('dashboard') }}" @click="mobileMenuOpen = false" class="flex items-center px-6 py-3 text-white hover:bg-blue-700 transition {{ request()->routeIs('dashboard') ? 'bg-blue-700 border-l-4 border-white' : '' }}">
+                    <a href="{{ route('dashboard') }}" wire:navigate @click="mobileMenuOpen = false" class="flex items-center px-6 py-3 text-white hover:bg-blue-700 transition {{ request()->routeIs('dashboard') ? 'bg-blue-700 border-l-4 border-white' : '' }}">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
@@ -132,7 +132,7 @@
                     
                     {{-- Dashboard link only if role is explicitly wali_kelas to avoid duplicates --}}
                     @if(auth()->user()->role === 'wali_kelas')
-                    <a href="{{ route('dashboard') }}" @click="mobileMenuOpen = false" class="flex items-center px-6 py-3 text-white hover:bg-blue-700 transition {{ request()->routeIs('dashboard') ? 'bg-blue-700 border-l-4 border-white' : '' }}">
+                    <a href="{{ route('dashboard') }}" wire:navigate @click="mobileMenuOpen = false" class="flex items-center px-6 py-3 text-white hover:bg-blue-700 transition {{ request()->routeIs('dashboard') ? 'bg-blue-700 border-l-4 border-white' : '' }}">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
@@ -188,7 +188,7 @@
                             </button>
 
                             <div x-show="open" @click.away="open = false" x-cloak class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
-                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                <a href="{{ route('profile.edit') }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">

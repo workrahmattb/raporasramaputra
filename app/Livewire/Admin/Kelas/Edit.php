@@ -47,7 +47,7 @@ class Edit extends Component
         ]);
 
         session()->flash('message', 'Kelas berhasil diperbarui.');
-        return redirect()->route('admin.kelas.index');
+        $this->redirectRoute('admin.kelas.index', navigate: true);
     }
 
     public function render()
