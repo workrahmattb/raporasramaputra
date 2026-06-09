@@ -133,6 +133,10 @@
             font-weight: bold;
         }
 
+        .subject-name {
+            font-weight: bold;
+        }
+
         .deskripsi-subject {
             font-size: 6.5pt;
             color: #555;
@@ -286,7 +290,7 @@
                     @endphp
                     <tr>
                         <td class="no-col">{{ $nilaiIndex + 1 }}</td>
-                        <td>{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
+                        <td class="subject-name">{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
                         <td class="deskripsi-subject">{{ $nilai->mataPelajaran->deskripsi ?? '-' }}</td>
                         <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}</td>
                     </tr>

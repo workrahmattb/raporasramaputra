@@ -114,9 +114,11 @@ class Index extends Component
             'orientation' => 'P',
         ]);
 
-        return response()->streamDownload(function() use ($pdf) {
-            echo $pdf->output();
-        }, 'rapor-' . $kelas->nama . '-' . $semester->nama . '.pdf');
+        return response($pdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="rapor-' . $kelas->nama . '-' . $semester->nama . '.pdf"',
+            'Cache-Control' => 'no-cache, must-revalidate',
+        ]);
     }
 
 

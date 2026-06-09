@@ -98,6 +98,68 @@ Beberapa navigasi masih menggunakan **full page reload** alih-alih **Livewire SP
 
 ---
 
+## 📱 Perbaikan Cetak PDF di Mobile (2026-06-09)
+
+### Masalah
+Cetak rapor PDF tidak bisa di-download melalui **browser mobile** (iOS Safari, Chrome Android).
+
+### Root Cause
+1. **`response()->streamDownload()`** — Tidak kompatibel dengan mobile browser. iOS Safari gagal handle streaming PDF, sering tampil blank page atau error.
+2. **`target="_blank"`** — Browser mobile memblokir popup, tab baru tidak terbuka.
+3. **Content-Disposition: attachment** — iOS Safari sering mengabaikan header ini untuk PDF dari stream download.
+
+### Perubahan yang Dilakukan (6 file)
+
+#### 🔄 4 PHP Livewire Components — `streamDownload` → `response()`
+| File | Method |
+|------|--------|
+| `app/Livewire/Admin/Rapor/Preview.php` | `print()` |
+| `app/Livewire/WaliKelas/Rapor/Preview.php` | `print()` |
+| `app/Livewire/Admin/Rapor/Index.php` | `printAllByClass()` |
+| `app/Livewire/WaliKelas/Rapor/Index.php` | `printAllByClass()` |
+
+**Sebelum:**
+```php
+return response()->streamDownload(function() use ($pdf) {
+    echo $pdf->output();
+}, 'rapor-...');
+```
+
+**Sesudah:**
+```php
+return response($pdf->output(), 200, [
+    'Content-Type' => 'application/pdf',
+    'Content-Disposition' => 'attachment; filename="rapor-..."',
+    'Cache-Control' => 'no-cache, must-revalidate',
+]);
+```
+
+#### 🔄 2 Blade Views — Hapus `target="_blank"`
+| File |
+|------|
+| `resources/views/livewire/admin/rapor/preview.blade.php` |
+| `resources/views/livewire/wali-kelas/rapor/preview.blade.php` |
+
+**Sebelum:**
+```blade
+<a href="..." target="_blank" class="...">Cetak PDF</a>
+```
+
+**Sesudah:**
+```blade
+<a href="..." class="...">Cetak PDF</a>
+```
+
+### Hasil
+- ✅ PDF bisa di-download di **iOS Safari** (langsung download/save)
+- ✅ PDF bisa di-download di **Chrome Android**
+- ✅ Tidak ada popup blocker
+- ✅ Alur bisnis tidak berubah
+- ✅ Semua syntax valid (lolos `php -l`)
+- ✅ Semua review OK
+
+---
+
 ## 📄 Perbaikan Layout Cetak Rapor PDF (2026-06-09)
 
 ### Masalah
@@ -164,3 +226,22 @@ Cetak rapor PDF tidak muat dalam 1 halaman F4 (215mm x 330mm), font terlalu besa
 - ✅ CSS baru: `.sign-left`, `.sign-right`, `.sign-center`
 - ✅ CSS lama (`.sign-col-center`, `.sign-row-2-left/right`) dibersihkan
 - ✅ Semua syntax valid
+
+---
+
+## 🔤 Nama Mata Pelajaran Bold di Cetak Rapor (2026-06-09)
+
+### Perubahan
+Nama mata pelajaran di tabel nilai rapor PDF dibuat **bold (tebal)** agar lebih mudah dibaca dan kontras dengan deskripsi indikator yang tetap *italic*.
+
+### File yang Diubah (3 file)
+| File | Perubahan |
+|------|-----------|
+| `resources/views/livewire/admin/rapor/print.blade.php` | Tambah CSS `.subject-name { font-weight: bold }` + apply ke `<td>` mapel |
+| `resources/views/livewire/wali-kelas/rapor/print.blade.php` | Sama |
+| `resources/views/livewire/admin/rapor/print-all.blade.php` | Sama |
+
+### Hasil
+- ✅ Nama mapel jadi **bold**, lebih mudah dibaca
+- ✅ Konsisten di semua 3 view cetak
+- ✅ Tidak mengubah layout atau alur bisnis

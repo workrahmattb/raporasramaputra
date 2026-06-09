@@ -112,9 +112,11 @@ class Preview extends Component
             'orientation' => 'P',
         ]);
 
-        return response()->streamDownload(function() use ($pdf) {
-            echo $pdf->output();
-        }, 'rapor-' . $this->siswa->nama . '-' . $this->semester->nama . '.pdf');
+        return response($pdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="rapor-' . $this->siswa->nama . '-' . $this->semester->nama . '.pdf"',
+            'Cache-Control' => 'no-cache, must-revalidate',
+        ]);
     }
 
     public function render()
