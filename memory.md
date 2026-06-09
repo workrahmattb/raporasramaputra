@@ -95,3 +95,72 @@ Beberapa navigasi masih menggunakan **full page reload** alih-alih **Livewire SP
 - **9** ubah redirect ke `navigate: true` di Livewire Components
 - ✅ Semua syntax valid
 - ✅ Alur bisnis tidak berubah
+
+---
+
+## 📄 Perbaikan Layout Cetak Rapor PDF (2026-06-09)
+
+### Masalah
+Cetak rapor PDF tidak muat dalam 1 halaman F4 (215mm x 330mm), font terlalu besar, layout signature tidak rapi.
+
+### Perubahan yang Dilakukan
+
+#### 3 File Print Rapor Diperbaiki:
+1. `resources/views/livewire/admin/rapor/print.blade.php` — Single print admin
+2. `resources/views/livewire/wali-kelas/rapor/print.blade.php` — Single print wali kelas
+3. `resources/views/livewire/admin/rapor/print-all.blade.php` — Print all class
+
+#### Detail Pengecilan Layout (1 Halaman F4):
+
+| Elemen | Sebelum | Sesudah |
+|--------|---------|---------|
+| Body font | 10pt | **7.5pt** |
+| Line-height | 1.3 | **1.15** |
+| Margin @page | 10mm 15mm | **8mm 12mm** |
+| Yayasan header | 13pt → **11pt** | diperbesar |
+| Subtitle pondok | 16pt → **14pt** | diperbesar |
+| Alamat | 10pt → **9pt** | diperbesar |
+| Logo | 100px → **80px** | diperbesar |
+| Title rapor | 14pt | **9pt** |
+| Border header | 2px | **3px** |
+| Padding tabel th | 10px | **4px** |
+| Padding tabel td | 8px 10px | **3px 5px** |
+| Border tabel | 4px double | **2px double** |
+| Notes min-height | 60px | **28px** |
+| Signature spacer | 40px | **18px** |
+| Ukuran kertas | F4 | **Tetap F4 (215×330mm)** |
+
+#### Penyesuaian Signature Spacer:
+- Awal: 3 `sign-spacer` per cell
+- Dinaikkan ke 7, lalu 13 (ternyata terlalu banyak)
+- **Final: 10 `sign-spacer`** per cell ✅
+
+#### Signature Orang Tua Terisi Nama Ayah:
+- `$siswa->nama_ayah` dari model SiswaRapor (field `nama_ayah`) ✅
+- Ditampilkan di signature Orang Tua / Wali, bukan placeholder kosong
+
+#### Tata Letak Signature Final:
+```
+┌─────────────────────┬─────────────────────┐
+│  ORANG TUA / WALI   │   PEMBINA ASRAMA    │
+│  $siswa->nama_ayah  │   (nama)            │
+└─────────────────────┴─────────────────────┘
+┌───────────────────────────────────────────┐
+│              MENGETAHUI                   │
+│              (placeholder)                │
+└───────────────────────────────────────────┘
+┌─────────────────────┬─────────────────────┐
+│  KEPALA PENGASUHAN  │   PIMPINAN PONDOK   │
+│  ASRAMA             │   PESANTREN         │
+│  (nama)             │   (nama)            │
+└─────────────────────┴─────────────────────┘
+```
+
+- ✅ Orang Tua / Wali — **kiri atas** (isi: `nama_ayah`)
+- ✅ Pembina Asrama — **kanan atas**
+- ✅ Mengetahui — **tengah**
+- ✅ Kepala Pengasuhan Asrama — **kiri bawah**
+- ✅ Pimpinan Pondok Pesantren — **kanan bawah**
+- ✅ CSS baru: `.sign-left`, `.sign-right`, `.sign-center`
+- ✅ CSS lama (`.sign-col-center`, `.sign-row-2-left/right`) dibersihkan
+- ✅ Semua syntax valid

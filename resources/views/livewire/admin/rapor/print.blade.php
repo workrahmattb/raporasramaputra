@@ -7,52 +7,54 @@
     <title>Rapor - {{ $siswa->nama }}</title>
     <style>
         @page {
-            margin: 10mm 15mm;
+            margin: 8mm 12mm;
             size: 215mm 330mm;
         }
 
         body {
             font-family: 'DejaVu Sans', sans-serif;
-            font-size: 10pt;
+            font-size: 7.5pt;
             color: #000;
-            line-height: 1.3;
+            line-height: 1.15;
         }
 
         .header-table {
             width: 100%;
-            border-bottom: 4px solid #000;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            border-bottom: 3px solid #000;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .logo-img {
-            width: 100px;
+            width: 80px;
             height: auto;
         }
 
         .header-text {
             text-align: center;
-        }        .header-yayasan {
-            font-size: 13pt;
+        }
+        
+        .header-yayasan {
+            font-size: 11pt;
             font-weight: 700;
             margin: 0;
             letter-spacing: 0.5px;
         }
         
         .header-subtitle {
-            font-size: 16pt;
+            font-size: 14pt;
             font-weight: 800;
-            margin: 5px 0;
+            margin: 3px 0;
         }
         
         .header-address {
-            font-size: 10pt;
-            margin: 2px 0;
+            font-size: 9pt;
+            margin: 1px 0;
             color: #444;
         }
 
         .identity-box {
-            margin-bottom: 20px;
+            margin-bottom: 6px;
         }
 
         .identity-table {
@@ -62,18 +64,18 @@
         }
 
         .identity-table td {
-            padding: 3px 6px;
+            padding: 1px 4px;
             vertical-align: top;
             border: none;
         }
 
         .label {
             font-weight: bold;
-            width: 140px;
+            width: 100px;
         }
 
         .separator {
-            width: 15px;
+            width: 10px;
             text-align: center;
         }
 
@@ -81,35 +83,44 @@
             font-weight: 500;
         }
 
-        .section-header {
-            padding: 8px 15px;
-            font-size: 14pt;
+        .report-title {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .report-title-main {
+            font-size: 9pt;
             font-weight: bold;
-            margin-bottom: 0;
-            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .report-title-sub {
+            font-size: 6.5pt;
+            font-style: italic;
+            color: #444;
         }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 0;
-            border: 4px double #000;
+            border: 2px double #000;
             table-layout: fixed;
         }
 
         .data-table th {
             background-color: #f5f5f5;
-            padding: 10px;
+            padding: 4px 4px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 9pt;
+            font-size: 6.5pt;
             border: 1px solid #000;
         }
 
         .data-table td {
-            padding: 8px 10px;
+            padding: 3px 5px;
             border: 1px solid #000;
-            font-size: 10pt;
+            font-size: 7.5pt;
         }
 
         .center {
@@ -125,7 +136,7 @@
         }
 
         .deskripsi-subject {
-            font-size: 9pt;
+            font-size: 6.5pt;
             color: #555;
             font-style: italic;
         }
@@ -137,55 +148,64 @@
             font-weight: 500;
         }
 
-        .notes {
-            border: 2px dashed #000;
-            padding: 15px;
-            min-height: 60px;
+        .notes-box {
+            border: 1.5px dashed #000;
+            padding: 6px 8px;
+            min-height: 28px;
+            margin-top: 2px;
         }
 
-        .footer-table {
+        .notes-label {
+            font-size: 8pt;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .footer-signatures {
             width: 100%;
-            margin-top: 5px;
-            page-break-inside: avoid;
+            margin-top: 2px;
+            border-collapse: collapse;
         }
 
-        .sign-col-left {
+        .footer-signatures td {
+            vertical-align: top;
+            padding: 0 10px;
+        }
+
+        .sign-left {
             width: 50%;
             text-align: left;
-            vertical-align: top;
-            padding-right: 20px;
         }
         
-        .sign-col-right {
+        .sign-right {
             width: 50%;
             text-align: right;
-            vertical-align: top;
-            padding-left: 20px;
         }
         
-        .sign-col-center {
+        .sign-center {
             width: 100%;
             text-align: center;
-            vertical-align: top;
         }
 
         .date-line {
             text-align: right;
-            margin-bottom: 10px;
-            padding-right: 20px;
-        }.sign-role {
-            font-size: 8pt;
+            margin-bottom: 4px;
+            font-size: 7pt;
+        }
+        
+        .sign-role {
+            font-size: 6pt;
             font-weight: normal;
         }
         
         .sign-name {
             font-weight: bold;
-            font-size: 11pt;
+            font-size: 8pt;
             text-decoration: underline;
         }
 
         .sign-spacer {
-            height: 40px;
+            height: 18px;
         }
 
         .page-break {
@@ -214,11 +234,9 @@
     </table>
 
     <!-- Report Title -->
-    <div style="text-align: center; margin-bottom: 20px;">
-        <div style="font-size: 14pt; font-weight: bold; line-height: 1.4;">LAPORAN PENILAIAN SIKAP KEPRIBADIAN DAN
-            SOSIAL SANTRI</div>
-        <div style="font-size: 10pt; font-style: italic; color: #444;">(Assessment Report of Students' Religious and
-            Social Behavior)</div>
+    <div class="report-title">
+        <div class="report-title-main">LAPORAN PENILAIAN SIKAP KEPRIBADIAN DAN SOSIAL SANTRI</div>
+        <div class="report-title-sub">(Assessment Report of Students' Religious and Social Behavior)</div>
     </div>
 
     <!-- Identity -->
@@ -245,17 +263,17 @@
                 <td class="value">{{ $semester->tahunAjaran->tahun ?? '-' }}</td>
             </tr>
         </table>
-    </div>    <!-- Academic Scores -->
+    </div>
+
+    <!-- Academic Scores -->
     @if(count($nilais) > 0)
         <table class="data-table">
             <thead>
                 <tr>
                     <th class="center" width="8%">No</th>
-                    <th width="35%">Aspek Penilaian<br><span style="font-weight:normal;font-size:8pt">(Assessment
-                            Aspect)</span></th>
-                    <th width="37%">Indikator<br><span style="font-weight:normal;font-size:8pt">(Indicator)</span>
-                    </th>
-                    <th class="center" width="20%">Nilai</th>
+                    <th width="35%">Aspek Penilaian<br><span style="font-weight:normal;font-size:6pt">(Assessment Aspect)</span></th>
+                    <th width="37%">Indikator<br><span style="font-weight:normal;font-size:6pt">(Indicator)</span></th>
+                    <th class="center" width="20%">Nilai<br><span style="font-weight:normal;font-size:6pt">(Score)</span></th>
                 </tr>
             </thead>
             <tbody>
@@ -268,55 +286,75 @@
                         <td class="no-col">{{ $index + 1 }}</td>
                         <td>{{ $nilai->mataPelajaran->nama ?? '-' }}</td>
                         <td class="deskripsi-subject">{{ $nilai->mataPelajaran->deskripsi ?? '-' }}</td>
-                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}
-                        </td>
+                        <td class="center grade-score">{{ $isEmptyNilai ? '-' : number_format($nilaiPengetahuan, 0) }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     @else
-        <p class="center" style="font-style: italic; color: #777; margin: 20px;">Belum ada data nilai</p>
+        <p class="center" style="font-style: italic; color: #777; margin: 10px;">Belum ada data nilai</p>
     @endif
 
     <!-- Notes -->
-    <div class="section-header">CATATAN MUSRIF</div>
-    <div class="notes">
+    <div class="notes-label">CATATAN MUSRIF</div>
+    <div class="notes-box">
         @if ($catatan && $catatan->catatan)
             {{ $catatan->catatan }}
         @else
             <span style="color: #999; font-style: italic;">Tidak ada catatan.</span>
         @endif
-    </div>    <!-- Signatures -->
+    </div>
+
+    <!-- Date -->
     <div class="date-line">
         <span>{{ $settings->tanggal_rapor ?? now()->locale('id')->isoFormat('D MMMM YYYY') }}</span>
     </div>
-    
-    <table class="footer-table">
+
+    <!-- Signatures -->
+    <!-- Row 1: Orang Tua (Kiri) + Pembina Asrama (Kanan) -->
+    <table class="footer-signatures">
         <tr>
-            <td class="sign-col-left">
+            <td class="sign-left">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-name"></div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $siswa->nama_ayah ?? '-' }}</div>
                 <div class="sign-role">ORANG TUA / WALI</div>
             </td>
-            <td class="sign-col-right">
+            <td class="sign-right">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-name">
-                    {{ $kelas->waliKelas->nama ?? '' }}
-                </div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $kelas->waliKelas->nama ?? '' }}</div>
                 <div class="sign-role">PEMBINA ASRAMA</div>
             </td>
         </tr>
     </table>
-    
-    <table class="footer-table">
+
+    <!-- Row 2: Mengetahui (Tengah) -->
+    <table class="footer-signatures">
         <tr>
-            <td class="sign-col-center" colspan="2">
+            <td class="sign-center">
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
@@ -326,24 +364,37 @@
             </td>
         </tr>
     </table>
-    
-    <table class="footer-table">
+
+    <!-- Row 3: Kepala Pengasuhan Asrama (Kiri) + Pimpinan Pondok (Kanan) -->
+    <table class="footer-signatures">
         <tr>
-            <td class="sign-col-left">
+            <td class="sign-left">
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
-                <div class="sign-name">{{ $settings->pimpinan_pondok ?? '-' }}</div>
-                <div class="sign-role">PIMPINAN PONDOK PESANTREN</div>
-            </td>
-            <td class="sign-col-right">
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-spacer">&nbsp;</div>
                 <div class="sign-name">{{ $settings->kepala_pengasuhan_asrama ?? '-' }}</div>
                 <div class="sign-role">KEPALA PENGASUHAN ASRAMA</div>
+            </td>
+            <td class="sign-right">
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-spacer">&nbsp;</div>
+                <div class="sign-name">{{ $settings->pimpinan_pondok ?? '-' }}</div>
+                <div class="sign-role">PIMPINAN PONDOK PESANTREN</div>
             </td>
         </tr>
     </table>
